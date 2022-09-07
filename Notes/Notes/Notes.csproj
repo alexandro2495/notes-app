@@ -28,4 +28,18 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pages\" />
+    <None Remove="Fonts\" />
+    <None Remove="Renderers\" />
+    <None Remove="Fonts\MaterialIcons-Regular-2.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Renderers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\MaterialIcons-Regular-2.ttf" />
+  </ItemGroup>
 </Project>
