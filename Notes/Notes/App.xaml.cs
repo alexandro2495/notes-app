@@ -1,12 +1,9 @@
 ﻿using System;
-<<<<<<< HEAD
 using Notes.ViewModels;
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
-=======
 using Notes.Pages;
->>>>>>> 88f4301 (create login page, added icons, and renderers)
 using Xamarin.Forms;
 
 namespace Notes
@@ -16,10 +13,6 @@ namespace Notes
         public App() : this(null)
         {
 
-<<<<<<< HEAD
-=======
-            MainPage = new NavigationPage(new LoginPage());
->>>>>>> 88f4301 (create login page, added icons, and renderers)
         }
 
         public App(IPlatformInitializer initializer)
@@ -36,7 +29,7 @@ namespace Notes
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>(nameof(MainViewModel));
+            containerRegistry.RegisterForNavigation<LoginPage, MainViewModel>(nameof(MainViewModel));
         }
 
         protected override void OnInitialized()
