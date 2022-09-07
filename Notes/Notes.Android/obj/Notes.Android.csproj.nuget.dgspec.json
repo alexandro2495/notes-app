@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/Notes.Android.csproj": {}
+    "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/Notes.Android.csproj": {}
   },
   "projects": {
-    "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/Notes.Android.csproj": {
+    "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/Notes.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/Notes.Android.csproj",
+        "projectUniqueName": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/Notes.Android.csproj",
         "projectName": "Notes.Android",
-        "projectPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/Notes.Android.csproj",
+        "projectPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/Notes.Android.csproj",
         "packagesPath": "/Users/alex-macbook-pro/.nuget/packages/",
-        "outputPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/obj/",
+        "outputPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
@@ -26,8 +26,8 @@
         "frameworks": {
           "monoandroid12.0": {
             "projectReferences": {
-              "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj": {
-                "projectPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj"
+              "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj": {
+                "projectPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj"
               }
             }
           }
@@ -36,6 +36,18 @@
       "frameworks": {
         "monoandroid12.0": {
           "dependencies": {
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "Prism.DryIoc.Forms": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "Prism.Forms": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.0, )"
@@ -48,14 +60,14 @@
         }
       }
     },
-    "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj": {
+    "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj",
+        "projectUniqueName": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj",
         "projectName": "Notes",
-        "projectPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj",
+        "projectPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj",
         "packagesPath": "/Users/alex-macbook-pro/.nuget/packages/",
-        "outputPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/obj/",
+        "outputPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/alex-macbook-pro/.config/NuGet/NuGet.Config"
@@ -87,6 +99,18 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "Prism.DryIoc.Forms": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "Prism.Forms": {
+              "target": "Package",
+              "version": "[8.1.97, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",

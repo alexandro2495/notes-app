@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "n+c9/8ahmr6GjMks+YVCD5ewLufRPD+tMjQ40WUdAoUD3Nqv6p34CnEPNlCDAIvkljKhO+OCTcJ4RfyLCvuUIA==",
+  "dgSpecHash": "y3hS5O+N6iwk/reyNahNizQosccAPjfaEoOALPhLx216zFlCn/G45HrULIoWRv+0lvB6CXMo5ED4KvqOwPzPeg==",
   "success": true,
-  "projectFilePath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.Android/Notes.Android.csproj",
+  "projectFilePath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.Android/Notes.Android.csproj",
   "expectedPackageFiles": [
+    "/Users/alex-macbook-pro/.nuget/packages/dryioc.dll/4.7.7/dryioc.dll.4.7.7.nupkg.sha512",
+    "/Users/alex-macbook-pro/.nuget/packages/prism.core/8.1.97/prism.core.8.1.97.nupkg.sha512",
+    "/Users/alex-macbook-pro/.nuget/packages/prism.dryioc.forms/8.1.97/prism.dryioc.forms.8.1.97.nupkg.sha512",
+    "/Users/alex-macbook-pro/.nuget/packages/prism.forms/8.1.97/prism.forms.8.1.97.nupkg.sha512",
     "/Users/alex-macbook-pro/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/alex-macbook-pro/.nuget/packages/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "/Users/alex-macbook-pro/.nuget/packages/xamarin.androidx.activity/1.2.4.1/xamarin.androidx.activity.1.2.4.1.nupkg.sha512",
     "/Users/alex-macbook-pro/.nuget/packages/xamarin.androidx.annotation/1.2.0.1/xamarin.androidx.annotation.1.2.0.1.nupkg.sha512",
     "/Users/alex-macbook-pro/.nuget/packages/xamarin.androidx.annotation.experimental/1.1.0.1/xamarin.androidx.annotation.experimental.1.1.0.1.nupkg.sha512",
