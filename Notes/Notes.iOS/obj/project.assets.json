@@ -2,7 +2,66 @@
   "version": 3,
   "targets": {
     "Xamarin.iOS,Version=v1.0": {
+      "DryIoc.dll/4.7.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
+      "Prism.DryIoc.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "4.7.7",
+          "Prism.Forms": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        }
+      },
+      "Prism.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.3.0": {
         "type": "package",
         "compile": {
           "ref/xamarinios10/_._": {}
@@ -155,6 +214,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Prism.DryIoc.Forms": "8.1.97",
+          "Prism.Forms": "8.1.97",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
@@ -167,7 +229,66 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
+      "DryIoc.dll/4.7.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
+      "Prism.DryIoc.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "4.7.7",
+          "Prism.Forms": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        }
+      },
+      "Prism.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.3.0": {
         "type": "package",
         "compile": {
           "ref/xamarinios10/_._": {}
@@ -320,6 +441,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Prism.DryIoc.Forms": "8.1.97",
+          "Prism.Forms": "8.1.97",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
@@ -332,7 +456,66 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
+      "DryIoc.dll/4.7.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
+      "Prism.DryIoc.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "4.7.7",
+          "Prism.Forms": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        }
+      },
+      "Prism.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.3.0": {
         "type": "package",
         "compile": {
           "ref/xamarinios10/_._": {}
@@ -485,6 +668,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Prism.DryIoc.Forms": "8.1.97",
+          "Prism.Forms": "8.1.97",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
@@ -497,7 +683,66 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
+      "DryIoc.dll/4.7.7": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DryIoc.dll": {}
+        }
+      },
+      "Prism.Core/8.1.97": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {}
+        }
+      },
+      "Prism.DryIoc.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "4.7.7",
+          "Prism.Forms": "8.1.97"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Prism.DryIoc.Forms.dll": {}
+        }
+      },
+      "Prism.Forms/8.1.97": {
+        "type": "package",
+        "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.3.0": {
         "type": "package",
         "compile": {
           "ref/xamarinios10/_._": {}
@@ -650,6 +895,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Prism.Core": "8.1.97",
+          "Prism.DryIoc.Forms": "8.1.97",
+          "Prism.Forms": "8.1.97",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196"
         },
@@ -663,6 +911,103 @@
     }
   },
   "libraries": {
+    "DryIoc.dll/4.7.7": {
+      "sha512": "GC2JdW0mN3wTcbcteP7LWwfU1eao0If/vMozCXSbcNZbHQD7kBjcKFO82g0OLssr7gGPWS4+vWpNZ1oOy54JKw==",
+      "type": "package",
+      "path": "dryioc.dll/4.7.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "DryIoc.snk",
+        "LICENSE.txt",
+        "dryioc.dll.4.7.7.nupkg.sha512",
+        "dryioc.dll.nuspec",
+        "icon.png",
+        "lib/net35/DryIoc.dll",
+        "lib/net35/DryIoc.xml",
+        "lib/net40/DryIoc.dll",
+        "lib/net40/DryIoc.xml",
+        "lib/net45/DryIoc.dll",
+        "lib/net45/DryIoc.xml",
+        "lib/netstandard1.0/DryIoc.dll",
+        "lib/netstandard1.0/DryIoc.xml",
+        "lib/netstandard1.3/DryIoc.dll",
+        "lib/netstandard1.3/DryIoc.xml",
+        "lib/netstandard2.0/DryIoc.dll",
+        "lib/netstandard2.0/DryIoc.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/DryIoc.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/DryIoc.xml",
+        "lib/portable-net45+win8+wp8+wpa81/DryIoc.dll",
+        "lib/portable-net45+win8+wp8+wpa81/DryIoc.xml",
+        "readme.txt"
+      ]
+    },
+    "Prism.Core/8.1.97": {
+      "sha512": "EP5zrvWddw3eSq25Y7hHnDYdmLZEC2Z/gMrvmHzUuLbitmA1UaS7wQUlSwNr9Km8lzJNCvytFnaGBEFukHgoHg==",
+      "type": "package",
+      "path": "prism.core/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net461/Prism.dll",
+        "lib/net461/Prism.pdb",
+        "lib/net461/Prism.xml",
+        "lib/net47/Prism.dll",
+        "lib/net47/Prism.pdb",
+        "lib/net47/Prism.xml",
+        "lib/net5.0/Prism.dll",
+        "lib/net5.0/Prism.pdb",
+        "lib/net5.0/Prism.xml",
+        "lib/netstandard2.0/Prism.dll",
+        "lib/netstandard2.0/Prism.pdb",
+        "lib/netstandard2.0/Prism.xml",
+        "prism-logo.png",
+        "prism.core.8.1.97.nupkg.sha512",
+        "prism.core.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Prism.DryIoc.Forms/8.1.97": {
+      "sha512": "znXc1p5w0u3anoP6eUadWwJkdNyY+Yb4i64Zv1yK4Y3Bd1OQl/LB8yojHYe8OBsK1RZsuu618dQBznkuNRoSIA==",
+      "type": "package",
+      "path": "prism.dryioc.forms/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netstandard2.0/Prism.DryIoc.Forms.dll",
+        "lib/netstandard2.0/Prism.DryIoc.Forms.pdb",
+        "lib/netstandard2.0/Prism.DryIoc.Forms.xml",
+        "lib/xamarinios10/Prism.DryIoc.Forms.dll",
+        "lib/xamarinios10/Prism.DryIoc.Forms.pdb",
+        "lib/xamarinios10/Prism.DryIoc.Forms.xml",
+        "prism-logo.png",
+        "prism.dryioc.forms.8.1.97.nupkg.sha512",
+        "prism.dryioc.forms.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Prism.Forms/8.1.97": {
+      "sha512": "PZ11VwcKc1XNOhIAbdZXPwiRdG1QbxS3cV0JKdKJp914+LSGog71LbHg5hMY2C8AssfCe6wjG5wOvZaBV68nvw==",
+      "type": "package",
+      "path": "prism.forms/8.1.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/monoandroid10.0/Prism.Forms.dll",
+        "lib/monoandroid10.0/Prism.Forms.pdb",
+        "lib/monoandroid10.0/Prism.Forms.xml",
+        "lib/netstandard2.0/Prism.Forms.dll",
+        "lib/netstandard2.0/Prism.Forms.pdb",
+        "lib/netstandard2.0/Prism.Forms.xml",
+        "prism-logo.png",
+        "prism.forms.8.1.97.nupkg.sha512",
+        "prism.forms.nuspec",
+        "readme.txt"
+      ]
+    },
     "System.Numerics.Vectors/4.5.0": {
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
@@ -708,6 +1053,51 @@
         "system.numerics.vectors.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Reflection.Emit.Lightweight/4.3.0": {
+      "sha512": "oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
+      "type": "package",
+      "path": "system.reflection.emit.lightweight/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Reflection.Emit.Lightweight.dll",
+        "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll",
+        "lib/portable-net45+wp8/_._",
+        "lib/wp80/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll",
+        "ref/netstandard1.0/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/de/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/es/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/fr/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/it/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/ja/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/ko/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/ru/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/zh-hans/System.Reflection.Emit.Lightweight.xml",
+        "ref/netstandard1.0/zh-hant/System.Reflection.Emit.Lightweight.xml",
+        "ref/portable-net45+wp8/_._",
+        "ref/wp80/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/_._",
+        "system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+        "system.reflection.emit.lightweight.nuspec"
       ]
     },
     "Xamarin.Essentials/1.7.0": {
@@ -977,6 +1367,9 @@
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
       "Notes >= 1.0.0",
+      "Prism.Core >= 8.1.97",
+      "Prism.DryIoc.Forms >= 8.1.97",
+      "Prism.Forms >= 8.1.97",
       "Xamarin.Essentials >= 1.7.0",
       "Xamarin.Forms >= 5.0.0.2196"
     ]
@@ -987,11 +1380,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.iOS/Notes.iOS.csproj",
+      "projectUniqueName": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.iOS/Notes.iOS.csproj",
       "projectName": "Notes.iOS",
-      "projectPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.iOS/Notes.iOS.csproj",
+      "projectPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.iOS/Notes.iOS.csproj",
       "packagesPath": "/Users/alex-macbook-pro/.nuget/packages/",
-      "outputPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes.iOS/obj/",
+      "outputPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes.iOS/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -1006,8 +1399,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj": {
-              "projectPath": "/Users/alex-macbook-pro/Projects/Notes/Notes/Notes/Notes.csproj"
+            "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj": {
+              "projectPath": "/Users/alex-macbook-pro/Projects/notes-app/Notes/Notes/Notes.csproj"
             }
           }
         }
@@ -1016,6 +1409,18 @@
     "frameworks": {
       "xamarinios10": {
         "dependencies": {
+          "Prism.Core": {
+            "target": "Package",
+            "version": "[8.1.97, )"
+          },
+          "Prism.DryIoc.Forms": {
+            "target": "Package",
+            "version": "[8.1.97, )"
+          },
+          "Prism.Forms": {
+            "target": "Package",
+            "version": "[8.1.97, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.7.0, )"

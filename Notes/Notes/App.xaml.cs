@@ -1,28 +1,40 @@
 ﻿using System;
+using Notes.ViewModels;
+using Prism;
+using Prism.DryIoc;
+using Prism.Ioc;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Notes
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App ()
+        public App() : this(null)
+        {
+
+        }
+
+        public App(IPlatformInitializer initializer)
+            : this(initializer, true)
+        {
+
+        }
+
+        public App(IPlatformInitializer initializer, bool setFormsDependencyResolver)
+            : base(initializer, setFormsDependencyResolver)
+        {
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>(nameof(MainViewModel));
+        }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
-        }
-
-        protected override void OnStart ()
-        {
-        }
-
-        protected override void OnSleep ()
-        {
-        }
-
-        protected override void OnResume ()
-        {
+            NavigationService.NavigateAsync($"NavigationPage/{nameof(MainViewModel)}");
         }
     }
 }
