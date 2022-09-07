@@ -1,4 +1,5 @@
 ﻿using System;
+using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
 
@@ -15,7 +16,7 @@ namespace Notes.ViewModels
             set => SetProperty(ref _title, value);
         }
 
-        public MainViewModel(INavigationService navigationService)
+        public MainViewModel(INavigationService navigationService, INoteService noteService, IUserService userService)
         {
             _navigationService = navigationService;
             Title = "Hey there is a binding over here!!";
