@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Notes\Notes.csproj">
-      <Project>{D717B447-A1D1-4265-879E-2C240C725810}</Project>
+      <Project>{5DD49EFB-A50C-45D6-8A2A-CA7DAC2A5AEB}</Project>
       <Name>Notes</Name>
     </ProjectReference>
   </ItemGroup>
