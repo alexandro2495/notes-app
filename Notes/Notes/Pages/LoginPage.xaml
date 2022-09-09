@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Notes.Pages.LoginPage"
+    xmlns:renderer="clr-namespace:Notes.Renderers"
+    Title="My Notes Login Page">
+    <!--Resources for custom renderers -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+             <Style TargetType="renderer:StandardEntry">
+                <Setter Property="Padding" Value="13" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="Gray" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--Toolbar icons -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sign up" Clicked="ToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Size="30" FontFamily="Icons" Glyph="&#xe7fe;" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <!--main views stack -->
+    <StackLayout Margin="16">
+        <renderer:StandardEntry x:Name="username" Placeholder="Username" >
+            <!--Effects-->
+        </renderer:StandardEntry>
+        <renderer:StandardEntry x:Name="password" IsPassword="True"
+                                Placeholder="Password">
+            <!--Effects-->
+        </renderer:StandardEntry>
+        <Button Text="Sign In" Clicked="SignIn_Clicked"
+                BackgroundColor="LightSeaGreen" HorizontalOptions="Center" HeightRequest="40"
+                WidthRequest="250">
+            <Button.Triggers>
+                <!--Triggers-->
+            </Button.Triggers>
+        </Button>
+    </StackLayout>
+</ContentPage>
+

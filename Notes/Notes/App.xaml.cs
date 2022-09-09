@@ -3,6 +3,7 @@ using Notes.ViewModels;
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Notes.Pages;
 using Xamarin.Forms;
 
 namespace Notes
@@ -28,7 +29,7 @@ namespace Notes
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>(nameof(MainViewModel));
+            containerRegistry.RegisterForNavigation<NoteDetailPage, MainViewModel>(nameof(MainViewModel));
         }
 
         protected override void OnInitialized()

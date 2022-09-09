@@ -16,16 +16,28 @@
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="Prism.Forms" Version="8.1.97" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Core" />
     <None Remove="Prism.Forms" />
     <None Remove="Prism.DryIoc.Forms" />
     <None Remove="ViewModels\" />
-    <None Remove="sqlite-net-pcl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pages\" />
+    <None Remove="Fonts\" />
+    <None Remove="Renderers\" />
+    <None Remove="Fonts\MaterialIcons-Regular-2.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Renderers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\MaterialIcons-Regular-2.ttf" />
   </ItemGroup>
 </Project>
