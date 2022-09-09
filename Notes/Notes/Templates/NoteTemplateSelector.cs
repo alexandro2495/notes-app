@@ -1,6 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
-using Notes.Data.Models;
+//using Notes.Data.Models;
 namespace Notes.Templates
 {
     public class NoteTemplateSelector : DataTemplateSelector
@@ -10,13 +10,14 @@ namespace Notes.Templates
         public DataTemplate TextTemplate { get; set; }
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var note = (Note)item;
+            /*var note = (Note)item;
             switch (note.NoteType)
             {
                 case NoteType.Music: return MusicTemplate;
                 case NoteType.Picture: return PictureTemplate;
                 default: return TextTemplate;
-            }
+            }*/
+            return TextTemplate;
         }
     }
 }

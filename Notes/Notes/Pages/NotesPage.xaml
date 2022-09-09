@@ -111,7 +111,7 @@
                 <FontImageSource Size="30" FontFamily="Icons" Glyph="&#xe16c;" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-         <ToolbarItem Text="Logout" Clicked="ToolbarItem_Clicked">
+         <ToolbarItem Text="Logout" >
              <ToolbarItem.IconImageSource>
                 <FontImageSource Size="30" FontFamily="Icons" Glyph="&#xe9ba;" />
             </ToolbarItem.IconImageSource>
