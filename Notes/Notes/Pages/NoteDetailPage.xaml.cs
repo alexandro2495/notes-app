@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace Notes.Pages
 {
-    public partial class LogOutPage : ContentPage
+    public partial class NoteDetailPage : ContentPage
     {
-        public LogOutPage()
+        public NoteDetailPage()
         {
             InitializeComponent();
         }

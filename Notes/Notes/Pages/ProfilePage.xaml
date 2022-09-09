@@ -2,9 +2,9 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Notes.Pages.LoginPage"
+    x:Class="Notes.Pages.ProfilePage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
-    Title="My Notes Login Page">
+    Title="Profile Settings">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,30 +17,23 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <!--Toolbar icons -->
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sign up" Clicked="ToolbarItem_Clicked">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource Size="30" FontFamily="Icons" Glyph="&#xe7fe;" />
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-    <!--main views stack -->
     <StackLayout Margin="16">
-        <renderer:StandardEntry x:Name="username" Placeholder="Username" >
+        <renderer:StandardEntry x:Name="name" Placeholder="Name">
+            <!--Effects-->
+        </renderer:StandardEntry>
+        <renderer:StandardEntry x:Name="username" Placeholder="Username">
             <!--Effects-->
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
                                 Placeholder="Password">
             <!--Effects-->
         </renderer:StandardEntry>
-        <Button Text="Sign In" Clicked="SignIn_Clicked"
-                BackgroundColor="LightSeaGreen" HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250">
-            <Button.Triggers>
-                <!--Triggers-->
-            </Button.Triggers>
-        </Button>
+        <renderer:StandardEntry x:Name="email" Placeholder="E-mail">
+            <!--Behavior-->
+        </renderer:StandardEntry>
+        <Button Text=" Create account" BackgroundColor="LightSeaGreen"
+                HorizontalOptions="Center" HeightRequest="40"
+                WidthRequest="250" Clicked="Create_button" />
     </StackLayout>
 </ContentPage>
 

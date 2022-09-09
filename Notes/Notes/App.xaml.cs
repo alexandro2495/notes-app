@@ -29,7 +29,7 @@ namespace Notes
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LoginPage, MainViewModel>(nameof(MainViewModel));
+            containerRegistry.RegisterForNavigation<NoteDetailPage, MainViewModel>(nameof(MainViewModel));
         }
 
         protected override void OnInitialized()
