@@ -16,15 +16,22 @@
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="Prism.Forms" Version="8.1.97" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Core" />
     <None Remove="Prism.Forms" />
     <None Remove="Prism.DryIoc.Forms" />
     <None Remove="ViewModels\" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Services\Implementations\SqliteImp\" />
+    <None Remove="Images\Music.png" />
+    <None Remove="Images\Picture.png" />
+    <None Remove="Images\Text.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+    <Folder Include="Services\Implementations\SqliteImp\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />
@@ -39,5 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Fonts\MaterialIcons-Regular-2.ttf" />
+    <EmbeddedResource Include="Images\Music.png" />
+    <EmbeddedResource Include="Images\Picture.png" />
+    <EmbeddedResource Include="Images\Text.png" />
   </ItemGroup>
 </Project>

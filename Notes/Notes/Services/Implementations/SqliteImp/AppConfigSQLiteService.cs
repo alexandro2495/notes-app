@@ -1,20 +1,18 @@
 ﻿using System;
 using Notes.Data.Models;
-using Notes.Services.implementations;
 
-namespace Notes.Services.Implementations
+namespace Notes.Services.Implementations.SqliteImp
 {
     public class AppConfigSQLiteService : IAppConfigurationService
     {
-        private readonly SQLiteConnectionService _connection;
-        public AppConfigSQLiteService(SQLiteConnectionService connection)
+
+        public AppConfigSQLiteService()
         {
-            _connection = connection;
         }
 
         public void Create(AppConfiguration config)
         {
-            _connection.GetConnection().Insert(config);
+            SQLiteConnectionSingleton.Connection().Insert(config);
         }
 
         public void Update(AppConfiguration note)

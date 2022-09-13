@@ -4,12 +4,16 @@ using System.IO;
 using Notes.Data.Models;
 using SQLite;
 
-namespace Notes.Services.implementations
+namespace Notes.Services.Implementations.SqliteImp
 {
-    public class SQLiteConnectionService
+    internal class SQLiteConnectionSingleton
     {
+        //singleton object
+        private readonly static SQLiteConnectionSingleton singleton = new SQLiteConnectionSingleton();
+
         //database connection object
-        private SQLiteConnection DbConnection { get; set; }
+        private SQLiteConnection _dbConnectionInstance;
+
         //list to declare our database tables
         private List<Type> Tables = new List<Type>();
 
@@ -17,10 +21,13 @@ namespace Notes.Services.implementations
         private string AND_PATH = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         private string IOS_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-        public SQLiteConnectionService()
+        private SQLiteConnectionSingleton()
         {
-            CreateConnection();
-            CreateTables();
+            if (_dbConnectionInstance == null)
+            {
+                CreateConnection();
+                CreateTables();
+            }
         }
 
         private void CreateTables()
@@ -30,28 +37,27 @@ namespace Notes.Services.implementations
             Tables.Add(typeof(AppConfiguration));
             Tables.Add(typeof(Note));
 
-            //Creating tables
-            DbConnection.CreateTables(CreateFlags.None, Tables.ToArray());
+            //Creating tabless
+            _dbConnectionInstance.CreateTables(CreateFlags.None, Tables.ToArray());
 
         }
 
-        protected void CreateConnection()
+        private void CreateConnection()
         {
 #if IOS
             string path = Path.Combine(IOS_PATH, DB_NAME);
 #else
             string path = Path.Combine(AND_PATH, DB_NAME);
 #endif
-            DbConnection = new SQLiteConnection(
+            _dbConnectionInstance = new SQLiteConnection(
                 path,
                 SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite
             );
         }
 
-        public SQLiteConnection GetConnection()
+        public static SQLiteConnection Connection()
         {
-            return DbConnection;
+            return singleton._dbConnectionInstance;
         }
     }
 }
-
