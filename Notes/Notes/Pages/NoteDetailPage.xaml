@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Notes.Pages.NoteDetailPage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
-    Title="My Notes Details">
+    Title="{Binding TitlePage}">
      <!--Resources for custom renderers -->
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -19,23 +19,24 @@
     </ContentPage.Resources>
 
     <StackLayout Margin="16">
-         <renderer:StandardEntry x:Name="title" Placeholder="Title" >
+         <renderer:StandardEntry x:Name="title" Placeholder="Title" Text="{Binding Title}">
             <!--Effects-->
         </renderer:StandardEntry>
-         <renderer:StandardEntry x:Name="content" Placeholder="Content" >
+         <renderer:StandardEntry x:Name="content" Placeholder="Content" Text="{Binding Content}">
             <!--Effects-->
         </renderer:StandardEntry>
         <Label Text="Select type of Note" />
-        <Picker Title="Note Type">
+        <Picker Title="Note Type" SelectedIndex="{Binding NoteTypeSelected}">
             <Picker.Items>
-                <x:String> Text </x:String>
+                <x:String> None </x:String>
                 <x:String> Picture </x:String>
                 <x:String> Music </x:String>
+                <x:String> Text </x:String>
             </Picker.Items>
         </Picker>
         <Button Text="Save" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250" Margin="18" />
+                WidthRequest="250" Margin="18" Command="{Binding SaveNoteCommand}" />
     </StackLayout>
 </ContentPage>
 

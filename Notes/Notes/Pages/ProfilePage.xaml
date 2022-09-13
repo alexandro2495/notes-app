@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Notes.Pages.ProfilePage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
-    Title="Profile Settings">
+    Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,22 +18,25 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Margin="16">
-        <renderer:StandardEntry x:Name="name" Placeholder="Name">
+        <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}">
             <!--Effects-->
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="username" Placeholder="Username">
+        <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}">
+            <!--Effects-->
+        </renderer:StandardEntry>
+        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
             <!--Effects-->
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
-                                Placeholder="Password">
+                                Placeholder="Password" Text="{Binding Password}">
             <!--Effects-->
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="email" Placeholder="E-mail">
+        <renderer:StandardEntry x:Name="email" Placeholder="E-mail" Text="{Binding Email}">
             <!--Behavior-->
         </renderer:StandardEntry>
         <Button Text=" Create account" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250" Clicked="Create_button" />
+                WidthRequest="250" Command="{Binding SingUpCommand}" />
     </StackLayout>
 </ContentPage>
 
