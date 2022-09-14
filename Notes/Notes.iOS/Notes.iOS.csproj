@@ -155,5 +155,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\delete.png" />
     <BundleResource Include="Resources\show.png" />
+    <BundleResource Include="Resources\Maps.png" />
   </ItemGroup>
 </Project>

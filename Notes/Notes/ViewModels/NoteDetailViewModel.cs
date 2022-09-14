@@ -6,6 +6,7 @@ using Notes.Data.Models;
 using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -15,6 +16,7 @@ namespace Notes.ViewModels
         private INavigationService _navigation;
         private INoteService _noteService;
         private IUserService _userService;
+        
 
         public ICommand SaveNoteCommand { get; private set; }
 
@@ -74,15 +76,20 @@ namespace Notes.ViewModels
             SaveNoteCommand = new Command(OnSaveNoteCommand);
         }
 
-        private void OnSaveNoteCommand()
+        private async void OnSaveNoteCommand()
         {
+            var location = await Geolocation.GetLocationAsync();
+            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}");
+           
             if (_note != null)
             {
                 _note.Title = Title;
                 _note.Content = Content;
                 _note.Type = (NoteType)NoteTypeSelected;
                 _noteService.Update(_note);
-
+                _note.Latitude = location.Latitude;
+                _note.Longitude = location.Longitude;
+                
                 MessagingCenter.Send(this, Constants.MSGC_UPDATE_NOTE, _note);
                 _navigation.GoBackAsync();
             }
@@ -96,6 +103,8 @@ namespace Notes.ViewModels
                     Type = (NoteType)NoteTypeSelected
                 };
                 _noteService.Create(_note);
+                _note.Latitude = location.Latitude;
+                _note.Longitude = location.Longitude;
 
                 MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
                 _navigation.GoBackAsync();
