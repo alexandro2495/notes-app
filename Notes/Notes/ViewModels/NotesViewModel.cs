@@ -22,6 +22,7 @@ namespace Notes.ViewModels
         public ICommand MultipleSelectionCommand { get; private set; }
         public ICommand LogOutCommand { get; private set; }
         public ICommand DeleteAllCommand { get; private set; }
+        public ICommand MapCommand { get; private set; }
 
         private string _title;
         public string Title
@@ -85,9 +86,15 @@ namespace Notes.ViewModels
             MultipleSelectionCommand = new Command(OnMultipleSelectionCommand);
             DeleteAllCommand = new Command(OnDeleteAllCommand);
             LogOutCommand = new Command(OnLogOutCommand);
+            MapCommand = new Command<Note>(OnMapCommand);
 
             MessagingCenter.Subscribe<NoteDetailViewModel, Note>(this, Constants.MSGC_NEW_NOTE, OnAddNoteCommand);
             MessagingCenter.Subscribe<NoteDetailViewModel, Note>(this, Constants.MSGC_UPDATE_NOTE, OnUpdateNoteCommand);
+        }
+
+        private void OnMapCommand(Note obj)
+        {
+            _navigation.NavigateAsync($"{nameof(MapsViewModel)}");
         }
 
         private void OnNewNoteCommand(object obj)

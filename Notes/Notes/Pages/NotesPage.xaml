@@ -40,6 +40,11 @@
                                   Command="{Binding Source={x:Reference NotePageReference},
                                   Path=BindingContext.DetailCommand}" 
                          IconImageSource="show.png"/>
+                       <SwipeItem Text="Map" BackgroundColor="Orange"
+                                  CommandParameter="{Binding .}"
+                                  Command="{Binding Source={x:Reference NotePageReference},
+                                  Path=BindingContext.MapCommand}" 
+                         IconImageSource="show.png"/>
                    </SwipeView.RightItems>
                    <Grid>
                        <views:PictureCView/>

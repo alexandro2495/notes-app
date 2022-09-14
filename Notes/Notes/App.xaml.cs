@@ -37,7 +37,7 @@ namespace Notes
 
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>(nameof(NotesViewModel));
             containerRegistry.RegisterForNavigation<NoteDetailPage, NoteDetailViewModel>(nameof(NoteDetailViewModel));
-
+            containerRegistry.RegisterForNavigation<MapsPage, MapsViewModel>(nameof(MapsViewModel));
             //services
             containerRegistry.Register<INoteService, NoteSQLiteService>();
             containerRegistry.Register<IUserService, UserSQLiteService>();
