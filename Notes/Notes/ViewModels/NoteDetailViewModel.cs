@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Microsoft.AppCenter.Analytics;
 using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Services;
@@ -91,7 +92,6 @@ namespace Notes.ViewModels
                 _note.Longitude = location.Longitude;
                 
                 MessagingCenter.Send(this, Constants.MSGC_UPDATE_NOTE, _note);
-                _navigation.GoBackAsync();
             }
             else
             {
@@ -105,12 +105,17 @@ namespace Notes.ViewModels
                     Longitude = location.Longitude
                 };
                 _noteService.Create(_note);
-                
+
+                var properties = new Dictionary<string, string> {
+                    {
+                        "Type", NoteTypes[NoteTypeSelected]
+                    },
+                };
+                Analytics.TrackEvent("NoteTypeAdded", properties);
 
                 MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
-                _navigation.GoBackAsync();
             }
-
+            _navigation.GoBackAsync();
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)

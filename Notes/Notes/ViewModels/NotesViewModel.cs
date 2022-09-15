@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.AppCenter.Analytics;
 using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Pages;
@@ -97,6 +99,13 @@ namespace Notes.ViewModels
             var parms = new NavigationParameters();
             parms.Add("note", note);
             _navigation.NavigateAsync($"{nameof(MapsViewModel)}", parms);
+
+            var properties = new Dictionary<string, string> {
+                {
+                    "Note_Title", note.Title
+                }
+            };
+            Analytics.TrackEvent("ViewMap", properties);
         }
 
         private void OnNewNoteCommand(object obj)
