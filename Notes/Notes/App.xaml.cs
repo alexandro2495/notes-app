@@ -7,6 +7,9 @@ using Notes.Pages;
 using Xamarin.Forms;
 using Notes.Services;
 using Notes.Services.Implementations.SqliteImp;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace Notes
 {
@@ -48,18 +51,31 @@ namespace Notes
 
         protected override void OnInitialized()
         {
-            InitializeComponent();
-            IUserService _userService = Container.Resolve<IUserService>();
-            var user = _userService.GetLoggedUser();
-            if (user != null && user != default)
+            try
             {
-                NavigationService.NavigateAsync($"NavigationPage/{nameof(NotesViewModel)}");
-            }
-            else
+                InitializeComponent();
+
+                //init App Center
+                AppCenter.Start("android=d7eb73c3-5ba2-446e-a671-a9265dec2e22;" +
+                      "ios={Your iOS App secret here};",
+                      typeof(Analytics), typeof(Crashes));
+
+
+                IUserService _userService = Container.Resolve<IUserService>();
+                var user = _userService.GetLoggedUser();
+                if (user != null && user != default)
+                {
+                    NavigationService.NavigateAsync($"NavigationPage/{nameof(NotesViewModel)}");
+                }
+                else
+                {
+                    NavigationService.NavigateAsync($"NavigationPage/{nameof(LoginViewModel)}");
+                }
+
+            } catch(Exception e)
             {
-                NavigationService.NavigateAsync($"NavigationPage/{nameof(LoginViewModel)}");
+                Crashes.TrackError(e);
             }
-            
         }
     }
 }

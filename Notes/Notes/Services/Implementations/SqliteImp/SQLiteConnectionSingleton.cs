@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.AppCenter.Crashes;
 using Notes.Data.Models;
 using SQLite;
 
@@ -49,10 +50,20 @@ namespace Notes.Services.Implementations.SqliteImp
 #else
             string path = Path.Combine(AND_PATH, DB_NAME);
 #endif
-            _dbConnectionInstance = new SQLiteConnection(
-                path,
-                SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite
-            );
+            try
+            {
+                _dbConnectionInstance = new SQLiteConnection(
+                    path,
+                    SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite
+                );
+            } catch(Exception e)
+            {
+                var properties = new Dictionary<string, string> {
+                    { "path", path }
+                };
+                Crashes.TrackError(e, properties);
+            }
+            
         }
 
         public static SQLiteConnection Connection()
