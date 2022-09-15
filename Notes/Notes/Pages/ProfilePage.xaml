@@ -24,32 +24,32 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Margin="16">
-        <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}">
+        <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}" AutomationId="nameentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}">
+        <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}" AutomationId="lastnentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
+        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}" AutomationId="userprofile">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
-                                Placeholder="Password" Text="{Binding Password}">
+                                Placeholder="Password" Text="{Binding Password}" AutomationId="passwordprofile">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="email" Placeholder="E-mail" Text="{Binding Email}">
+        <renderer:StandardEntry x:Name="email" Placeholder="E-mail" Text="{Binding Email}" AutomationId="emailentry">
             <!--Behavior-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
@@ -58,7 +58,7 @@
                 <behavior:ValidateEmailBehavior />
             </renderer:StandardEntry.Behaviors>
         </renderer:StandardEntry>
-        <Button Text="Create account" BackgroundColor="LightSeaGreen"
+        <Button Text=" Create account" BackgroundColor="LightSeaGreen" AutomationId="createbutton"
                 HorizontalOptions="Center" HeightRequest="40"
                 WidthRequest="250" IsEnabled="False">
             <!--Triggers-->

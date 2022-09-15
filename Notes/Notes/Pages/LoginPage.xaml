@@ -23,7 +23,7 @@
     </ContentPage.Resources>
     <!--Toolbar icons -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sign up" Command="{Binding SignUpCommand}">
+        <ToolbarItem Text="Sign up" Command="{Binding SignUpCommand}" AutomationId="signupbutton">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Size="30" FontFamily="Icons" Glyph="&#xe7fe;" />
             </ToolbarItem.IconImageSource>
@@ -31,14 +31,16 @@
     </ContentPage.ToolbarItems>
     <!--main views stack -->
     <StackLayout Margin="16">
-        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
+        <renderer:StandardEntry x:Name="username" Placeholder="Username"
+                                Text="{Binding UserName}" AutomationId="userentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
-                                Placeholder="Password" Text="{Binding Password}">
+                                Placeholder="Password" Text="{Binding Password}"
+                                AutomationId="passwordentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
@@ -46,7 +48,7 @@
         </renderer:StandardEntry>
         <Button Text="Sign In" IsEnabled="False"
                 BackgroundColor="LightSeaGreen" HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250">
+                WidthRequest="250" AutomationId="signinbutton">
             <Button.Triggers>
                 <!--Triggers-->
                 <MultiTrigger TargetType="Button">
