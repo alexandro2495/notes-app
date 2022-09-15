@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.AppCenter.Analytics;
 using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Services;
@@ -104,6 +106,16 @@ namespace Notes.ViewModels
                     Email = Email,
                     IdAppConfiguration = config.Id
                 };
+
+                var properties = new Dictionary<string, string> {
+                    {
+                        "Name", Name + LastName
+                    },
+                    {
+                        "Email", Email
+                    },
+                };
+                Analytics.TrackEvent("CreatedUser", properties);
 
 
                 _userService.Save(user);
