@@ -39,21 +39,23 @@ namespace Notes.UITesting
             app.EnterText("Lopez");
             app.DismissKeyboard();
             app.Tap("userprofile");
-            app.EnterText("Carlos");
+            app.EnterText("Carlos_1");
             app.DismissKeyboard();
             app.Tap("passwordprofile");
-            app.EnterText("123");
+            app.EnterText("Cagl1581");
             app.DismissKeyboard();
             app.Tap("emailentry");
-            app.EnterText("carlos@algo.com");
+            app.EnterText("carlos@");
+            app.WaitForElement(c => c.Marked("createbutton"), postTimeout:TimeSpan.FromSeconds(3));
+            app.EnterText("algo.com");
             app.DismissKeyboard();
             app.Tap("createbutton");
 
             app.Tap("userentry");
-            app.EnterText("Carlos");
+            app.EnterText("Carlos_1");
             app.DismissKeyboard();
             app.Tap("passwordentry");
-            app.EnterText("123");
+            app.EnterText("Cagl1581");
             app.DismissKeyboard();
 
             //Act
