@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Notes.Pages.LoginPage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
+    xmlns:effects="clr-namespace:Notes.Effects"
+    xmlns:converters="clr-namespace:Notes.Converters"
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
@@ -15,6 +17,8 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="8" />
             </Style>
+            <converters:ValidateLengthPasswordConverter x:Key="VLPassword" />
+            <converters:ValidateLengthUsernameConverter x:Key="VLUserName" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--Toolbar icons -->
@@ -29,16 +33,35 @@
     <StackLayout Margin="16">
         <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
                                 Placeholder="Password" Text="{Binding Password}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <Button Text="Sign In" Command="{Binding LoginCommand}"
+        <Button Text="Sign In" IsEnabled="False"
                 BackgroundColor="LightSeaGreen" HorizontalOptions="Center" HeightRequest="40"
                 WidthRequest="250">
             <Button.Triggers>
                 <!--Triggers-->
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition
+                            Binding="{Binding UserName, Converter={StaticResource VLUserName}}"
+                            Value="true" />
+                        <BindingCondition
+                            Binding="{Binding Password, Converter={StaticResource VLPassword}}"
+                            Value="true" />
+
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Setter Property="Command" Value="{Binding LoginCommand}" />
+                </MultiTrigger>
             </Button.Triggers>
         </Button>
     </StackLayout>

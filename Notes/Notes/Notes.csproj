@@ -35,10 +35,18 @@
     <None Remove="Microsoft.AppCenter" />
     <None Remove="Microsoft.AppCenter.Crashes" />
     <None Remove="Microsoft.AppCenter.Analytics" />
+    <None Remove="Behaviors\" />
+    <None Remove="Converters\" />
+    <None Remove="Effects\" />
+    <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Services\Implementations\SqliteImp\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Effects\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />
