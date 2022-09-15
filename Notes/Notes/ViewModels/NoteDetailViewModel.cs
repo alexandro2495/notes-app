@@ -100,11 +100,12 @@ namespace Notes.ViewModels
                     Title = Title,
                     Content = Content,
                     IdUsuario = _userService.GetLoggedUser().Id,
-                    Type = (NoteType)NoteTypeSelected
+                    Type = (NoteType)NoteTypeSelected,
+                    Latitude = location.Latitude,
+                    Longitude = location.Longitude
                 };
                 _noteService.Create(_note);
-                _note.Latitude = location.Latitude;
-                _note.Longitude = location.Longitude;
+                
 
                 MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
                 _navigation.GoBackAsync();

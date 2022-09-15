@@ -6,7 +6,7 @@
     x:Class="Notes.Pages.MapsPage"
     Title="Notes Maps">
 
-    <maps:Map x:Name="MyMap" />
+    <ContentView Content="{Binding _map}"/>
 
 </ContentPage>
 

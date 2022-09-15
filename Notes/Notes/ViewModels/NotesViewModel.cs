@@ -92,9 +92,11 @@ namespace Notes.ViewModels
             MessagingCenter.Subscribe<NoteDetailViewModel, Note>(this, Constants.MSGC_UPDATE_NOTE, OnUpdateNoteCommand);
         }
 
-        private void OnMapCommand(Note obj)
+        private void OnMapCommand(Note note)
         {
-            _navigation.NavigateAsync($"{nameof(MapsViewModel)}");
+            var parms = new NavigationParameters();
+            parms.Add("note", note);
+            _navigation.NavigateAsync($"{nameof(MapsViewModel)}", parms);
         }
 
         private void OnNewNoteCommand(object obj)
