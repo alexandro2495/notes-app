@@ -20,6 +20,10 @@ namespace Notes.Data.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Today;
 
+        public double Longitude { get; set; }
+
+        public double Latitude { get; set; }
+
         public Note()
         {
         }
