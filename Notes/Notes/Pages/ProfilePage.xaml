@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Notes.Pages.ProfilePage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
+    xmlns:effects="clr-namespace:Notes.Effects"
+    xmlns:converters="clr-namespace:Notes.Converters"
+    xmlns:behavior="clr-namespace:Notes.Behaviors"
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
@@ -15,28 +18,73 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="8" />
             </Style>
+            <converters:ValidateEmailConverter x:Key="ValidateEmail" />
+            <converters:ValidateUserNameConverter x:Key="ValidateUserName" />
+            <converters:ValidatePasswordConverter x:Key="ValidatePassword" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Margin="16">
         <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
                                 Placeholder="Password" Text="{Binding Password}">
             <!--Effects-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
         <renderer:StandardEntry x:Name="email" Placeholder="E-mail" Text="{Binding Email}">
             <!--Behavior-->
+            <renderer:StandardEntry.Effects>
+                <effects:EntryOnFocusEffect />
+            </renderer:StandardEntry.Effects>
+            <renderer:StandardEntry.Behaviors>
+                <behavior:ValidateEmailBehavior />
+            </renderer:StandardEntry.Behaviors>
         </renderer:StandardEntry>
-        <Button Text=" Create account" BackgroundColor="LightSeaGreen"
+        <Button Text="Create account" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250" Command="{Binding SingUpCommand}" />
+                WidthRequest="250" IsEnabled="False">
+            <!--Triggers-->
+            <Button.Triggers>
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition
+                            Binding="{Binding Email, Converter={StaticResource ValidateEmail}}"
+                            Value="true" />
+
+                        <BindingCondition
+                            Binding="{Binding UserName, Converter={StaticResource ValidateUserName}}"
+                            Value="true" />
+
+                        <BindingCondition
+                            Binding="{Binding Password, Converter={StaticResource ValidatePassword}}"
+                            Value="true" />
+
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsEnabled" Value="True" />
+                    <Setter Property="Command" Value="{Binding SingUpCommand}" />
+                </MultiTrigger>
+                
+            </Button.Triggers>
+
+        </Button>
     </StackLayout>
 </ContentPage>
 

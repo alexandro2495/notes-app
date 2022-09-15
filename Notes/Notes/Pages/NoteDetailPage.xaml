@@ -25,7 +25,7 @@
          <renderer:StandardEntry x:Name="content" Placeholder="Content" Text="{Binding Content}">
             <!--Effects-->
         </renderer:StandardEntry>
-        <Label Text="Select type of Note" />
+        <!--<Label Text="Select type of Note" />
         <Picker Title="Note Type" SelectedIndex="{Binding NoteTypeSelected}">
             <Picker.Items>
                 <x:String> None </x:String>
@@ -33,7 +33,13 @@
                 <x:String> Music </x:String>
                 <x:String> Text </x:String>
             </Picker.Items>
-        </Picker>
+        </Picker>-->
+        <renderer:NoteTypePicker Placeholder="Select Note type"  
+                Title="Title"  
+                TitleColor="Blue"
+                x:Name="NoteType"
+                ItemsSource="{Binding NoteTypes}"
+                SelectedIndex="{Binding NoteTypeSelected}"/> 
         <Button Text="Save" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
                 WidthRequest="250" Margin="18" Command="{Binding SaveNoteCommand}" />
