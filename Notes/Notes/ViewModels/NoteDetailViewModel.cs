@@ -18,6 +18,8 @@ namespace Notes.ViewModels
         private INavigationService _navigation;
         private INoteService _noteService;
         private IUserService _userService;
+        private ILoadingService _loadingService;
+
 
 
         public ICommand SaveNoteCommand { get; private set; }
@@ -62,12 +64,14 @@ namespace Notes.ViewModels
         public NoteDetailViewModel(
             INavigationService navigation,
             INoteService noteService,
-            IUserService userService
+            IUserService userService,
+            ILoadingService loadingService
         )
         {
             _navigation = navigation;
             _noteService = noteService;
             _userService = userService;
+            _loadingService = loadingService;
 
             NoteTypes = new List<string>() {
                 "None",
@@ -83,7 +87,7 @@ namespace Notes.ViewModels
         {
             /*var location = await Geolocation.GetLocationAsync();
             Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}");*/
-
+            _loadingService.ShowLoadingPage("saving note...");
             if (_note != null)
             {
                 _note.Title = Title;
@@ -92,7 +96,6 @@ namespace Notes.ViewModels
                 _noteService.Update(_note);
                 _note.Latitude = _locaiton.Latitude;
                 _note.Longitude = _locaiton.Longitude;
-
                 MessagingCenter.Send(this, Constants.MSGC_UPDATE_NOTE, _note);
             }
             else
@@ -118,6 +121,7 @@ namespace Notes.ViewModels
                 MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
             }
             _navigation.GoBackAsync();
+            _loadingService.HideLoadingPage();
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -139,13 +143,23 @@ namespace Notes.ViewModels
                 Title = _note.Title;
                 NoteTypeSelected = (int)_note.Type;
 
-                _locaiton = await Geolocation.GetLocationAsync();
-                Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
+                //_locaiton = await Geolocation.GetLocationAsync();
 
-            }
-            else
+                if (_locaiton != null)
+                {
+                    Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
+                    _loadingService.HideLoadingPage();
+                }
+                
+
+            } else
             {
                 TitlePage = Constants.NoteAddPageTitle;
+                if (_locaiton != null)
+                {
+                    Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
+                    _loadingService.HideLoadingPage();
+                }
             }
         }
     }
