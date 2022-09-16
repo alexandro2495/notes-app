@@ -14,10 +14,11 @@ namespace Notes.ViewModels
 {
     public class NoteDetailViewModel : BindableBase, INavigationAware
     {
+        private Location _locaiton;
         private INavigationService _navigation;
         private INoteService _noteService;
         private IUserService _userService;
-        
+
 
         public ICommand SaveNoteCommand { get; private set; }
 
@@ -62,7 +63,8 @@ namespace Notes.ViewModels
             INavigationService navigation,
             INoteService noteService,
             IUserService userService
-        ){
+        )
+        {
             _navigation = navigation;
             _noteService = noteService;
             _userService = userService;
@@ -77,20 +79,20 @@ namespace Notes.ViewModels
             SaveNoteCommand = new Command(OnSaveNoteCommand);
         }
 
-        private async void OnSaveNoteCommand()
+        private void OnSaveNoteCommand()
         {
-            var location = await Geolocation.GetLocationAsync();
-            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}");
-           
+            /*var location = await Geolocation.GetLocationAsync();
+            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}");*/
+
             if (_note != null)
             {
                 _note.Title = Title;
                 _note.Content = Content;
                 _note.Type = (NoteType)NoteTypeSelected;
                 _noteService.Update(_note);
-                _note.Latitude = location.Latitude;
-                _note.Longitude = location.Longitude;
-                
+                _note.Latitude = _locaiton.Latitude;
+                _note.Longitude = _locaiton.Longitude;
+
                 MessagingCenter.Send(this, Constants.MSGC_UPDATE_NOTE, _note);
             }
             else
@@ -101,8 +103,8 @@ namespace Notes.ViewModels
                     Content = Content,
                     IdUsuario = _userService.GetLoggedUser().Id,
                     Type = (NoteType)NoteTypeSelected,
-                    Latitude = location.Latitude,
-                    Longitude = location.Longitude
+                    Latitude = _locaiton.Latitude,
+                    Longitude = _locaiton.Longitude
                 };
                 _noteService.Create(_note);
 
@@ -124,10 +126,11 @@ namespace Notes.ViewModels
             Console.WriteLine("OnNavigatedFrom");
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public async void OnNavigatedTo(INavigationParameters parameters)
         {
-            //throw new NotImplementedException();
-            Console.WriteLine("OnNavigatedTo");
+            _locaiton = await Geolocation.GetLocationAsync();
+            Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
+
             if (parameters.ContainsKey("note"))
             {
                 _note = parameters.GetValue<Note>("note");
@@ -135,12 +138,15 @@ namespace Notes.ViewModels
                 Content = _note.Content;
                 Title = _note.Title;
                 NoteTypeSelected = (int)_note.Type;
-                
-            } else
+
+                _locaiton = await Geolocation.GetLocationAsync();
+                Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
+
+            }
+            else
             {
                 TitlePage = Constants.NoteAddPageTitle;
             }
         }
     }
 }
-

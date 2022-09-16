@@ -142,16 +142,16 @@
                     ItemTemplate="{StaticResource NoteTemplateSelector}">
             <CollectionView.EmptyView>
                 <AbsoluteLayout BackgroundColor="#FAFAFA">
-                    <Image AbsoluteLayout.LayoutBounds="0,70,400,500"
+                    <Image AbsoluteLayout.LayoutBounds="0,70,400,500" AbsoluteLayout.LayoutFlags="All"
                         Source="{local:ImageResourceX Notes.Images.EmptyView.png}"/>
-                    <Label FontSize="20"
+                    <Label FontSize="20" AbsoluteLayout.LayoutFlags="All"
                            AbsoluteLayout.LayoutBounds="60,470,300,110"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Start"
                         Text="Yo habia &#10; ponido mis notas aqui...&#10;"
                         TextColor="DarkGray"/>
                     <Label Text="Please pull to refresh" FontSize="20"
-                           TextColor="DarkGray"
+                           TextColor="DarkGray" AbsoluteLayout.LayoutFlags="All"
                            AbsoluteLayout.LayoutBounds="115,540,300,110"/>
                 </AbsoluteLayout>
             </CollectionView.EmptyView>

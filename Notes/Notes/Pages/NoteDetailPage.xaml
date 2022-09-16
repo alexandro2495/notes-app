@@ -18,31 +18,23 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Margin="16">
+    <StackLayout Margin="16" Spacing="20">
          <renderer:StandardEntry x:Name="title" Placeholder="Title" Text="{Binding Title}">
             <!--Effects-->
         </renderer:StandardEntry>
          <renderer:StandardEntry x:Name="content" Placeholder="Content" Text="{Binding Content}">
             <!--Effects-->
         </renderer:StandardEntry>
-        <!--<Label Text="Select type of Note" />
-        <Picker Title="Note Type" SelectedIndex="{Binding NoteTypeSelected}">
-            <Picker.Items>
-                <x:String> None </x:String>
-                <x:String> Picture </x:String>
-                <x:String> Music </x:String>
-                <x:String> Text </x:String>
-            </Picker.Items>
-        </Picker>-->
+        <Label Text="Select type of Note" />
         <renderer:NoteTypePicker Placeholder="Select Note type"  
-                Title="Title"  
+                Title="Select Note type"  
                 TitleColor="Blue"
                 x:Name="NoteType"
                 ItemsSource="{Binding NoteTypes}"
                 SelectedIndex="{Binding NoteTypeSelected}"/> 
         <Button Text="Save" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250" Margin="18" Command="{Binding SaveNoteCommand}" />
+                WidthRequest="290" Margin="18" Command="{Binding SaveNoteCommand}" />
     </StackLayout>
 </ContentPage>
 
