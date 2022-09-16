@@ -8,7 +8,9 @@ using Android;
 
 namespace Notes.Droid
 {
-    [Activity(Label = "Notes", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true,Exported =true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "Notes", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme",
+        MainLauncher = false,Exported =true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         const int RequestLocationId = 0;

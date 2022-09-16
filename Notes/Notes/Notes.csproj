@@ -39,6 +39,8 @@
     <None Remove="Converters\" />
     <None Remove="Effects\" />
     <None Remove="Utils\" />
+    <None Remove="Images\EmptyView.png" />
+    <None Remove="Images\StartMyNotes.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -64,5 +66,7 @@
     <EmbeddedResource Include="Images\Music.png" />
     <EmbeddedResource Include="Images\Picture.png" />
     <EmbeddedResource Include="Images\Text.png" />
+    <EmbeddedResource Include="Images\EmptyView.png" />
+    <EmbeddedResource Include="Images\StartMyNotes.png" />
   </ItemGroup>
 </Project>

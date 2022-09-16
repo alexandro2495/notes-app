@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -6,6 +6,7 @@
     xmlns:renderer="clr-namespace:Notes.Renderers"
     xmlns:effects="clr-namespace:Notes.Effects"
     xmlns:converters="clr-namespace:Notes.Converters"
+    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
@@ -30,9 +31,12 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <!--main views stack -->
-    <StackLayout Margin="16">
+    <StackLayout Margin="16" Spacing="20">
+        <Label Text="Welcome to MyNotes App" VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center" FontSize="20"/>
+        <Image Source="{local:ImageResourceX Notes.Images.StartMyNotes.png}"/>
         <renderer:StandardEntry x:Name="username" Placeholder="Username"
-                                Text="{Binding UserName}" AutomationId="userentry">
+                                Text="{Binding UserName}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
