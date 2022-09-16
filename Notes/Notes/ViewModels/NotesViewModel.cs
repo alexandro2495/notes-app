@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Pages;
 using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -58,20 +60,21 @@ namespace Notes.ViewModels
         private readonly INoteService _noteService;
         private readonly IUserService _userService;
         private readonly IAuthenticationService _authService;
-        //private Func<string, string, string, Task> _displayAlert;
+        private readonly IPageDialogService _dialogService;
         private readonly long _userId;
 
         public NotesViewModel(
             INavigationService navigation,
             INoteService noteService,
             IUserService userService,
-            IAuthenticationService authService)
+            IAuthenticationService authService,
+            IPageDialogService dialogService)
         {
             _navigation = navigation;
             _noteService = noteService;
             _userService = userService;
             _authService = authService;
-            //_displayAlert = displayAlert;
+            _dialogService = dialogService;
             _userId = _userService.GetLoggedUser().Id;
 
             Title = Constants.NotePageTitle;
@@ -113,27 +116,55 @@ namespace Notes.ViewModels
             _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
         }
 
-        private void OnDeleteAllCommand(object obj)
-        {
-            foreach (Note note in NotesSelected)
-            {
-                _noteService.Delete(note);
-                Notes.Remove(note);
-            }
-        }
-
-        private void OnLogOutCommand(object obj)
+        private async void OnDeleteAllCommand(object obj)
         {
             try
             {
-                _authService.SignOut(_userId.ToString());
-                _navigation.NavigateAsync($"/NavigationPage/{nameof(LoginViewModel)}");
-            }
-            catch (Exception e)
-            {
-                //_displayAlert(Constants.ERRMSG_AUTHENTICATION_LOGOUT, e.Message, Constants.OK);
-            }
+                bool confirm = await _dialogService.DisplayAlertAsync(
+                    Constants.DIALOG_QUESTION,
+                    Constants.DIALOG_DELETE_NOTES,
+                    Constants.YES,
+                    Constants.NO
+                );
 
+                if (confirm)
+                {
+                    foreach (Note note in NotesSelected)
+                    {
+                        _noteService.Delete(note);
+                        Notes.Remove(note);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
+            }
+        }
+
+        private async void OnLogOutCommand(object obj)
+        {
+            try
+            {
+                bool confirm = await _dialogService.DisplayAlertAsync(
+                    Constants.DIALOG_QUESTION,
+                    Constants.DIALOG_AUTHENTICATION_LOGOUT,
+                    Constants.YES,
+                    Constants.NO
+                );
+
+                if (confirm)
+                {
+                    _authService.SignOut(_userId.ToString());
+                    await _navigation.NavigateAsync($"/NavigationPage/{nameof(LoginViewModel)}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_LOGOUT, Constants.ERRMSG_AUTHENTICATION_LOGOUT_DESC, Constants.OK);
+            }
         }
 
         private void OnMultipleSelectionCommand(object obj)
@@ -150,10 +181,29 @@ namespace Notes.ViewModels
             _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}", parms);
         }
 
-        private void OnDeleteNoteCommand(Note note)
+        private async void OnDeleteNoteCommand(Note note)
         {
-            _noteService.Delete(note);
-            Notes.Remove(note);
+            try
+            {
+                bool confirm = await _dialogService.DisplayAlertAsync(
+                    Constants.DIALOG_QUESTION,
+                    Constants.DIALOG_DELETE_NOTE + note.Title,
+                    Constants.YES,
+                    Constants.NO
+                );
+
+                if (confirm)
+                {
+                    _noteService.Delete(note);
+                    Notes.Remove(note);
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
+            }
+            
         }
 
         private void OnAddNoteCommand(NoteDetailViewModel nodeDetail, Note note)

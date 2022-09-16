@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Microsoft.AppCenter.Crashes;
 
 namespace Notes.Utils
 {
@@ -35,9 +36,17 @@ namespace Notes.Utils
 
         internal static bool EmailIsValid(string emailAddress)
         {
-            bool isValid = ValidEmailRegex.IsMatch(emailAddress);
+            try
+            {
+                return ValidEmailRegex.IsMatch(emailAddress);
+                //return emailAddress != null && ValidEmailRegex.IsMatch(emailAddress);
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                return false;
 
-            return isValid;
+            }
         }
 
         internal static bool PasswordIsValid(string password)
