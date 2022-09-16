@@ -71,6 +71,8 @@
     <Compile Include="Renderers\StandariOSEntry.cs" />
     <Compile Include="Effects\EntryOnFocusIOSEffect.cs" />
     <Compile Include="Renderers\NoteTypeIOSRenderer.cs" />
+    <Compile Include="IOSInitializer.cs" />
+    <Compile Include="Implementations\LoadingServiceIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -157,6 +159,7 @@
   <ItemGroup>
     <Folder Include="Renderers\" />
     <Folder Include="Effects\" />
+    <Folder Include="Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\delete.png" />

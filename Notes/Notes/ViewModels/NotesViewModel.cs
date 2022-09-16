@@ -61,6 +61,7 @@ namespace Notes.ViewModels
         private readonly IUserService _userService;
         private readonly IAuthenticationService _authService;
         private readonly IPageDialogService _dialogService;
+        private readonly ILoadingService _loadingService;
         private readonly long _userId;
 
         public NotesViewModel(
@@ -68,13 +69,15 @@ namespace Notes.ViewModels
             INoteService noteService,
             IUserService userService,
             IAuthenticationService authService,
-            IPageDialogService dialogService)
+            IPageDialogService dialogService,
+            ILoadingService loadingService)
         {
             _navigation = navigation;
             _noteService = noteService;
             _userService = userService;
             _authService = authService;
             _dialogService = dialogService;
+            _loadingService = loadingService;
             _userId = _userService.GetLoggedUser().Id;
 
             Title = Constants.NotePageTitle;
@@ -111,9 +114,12 @@ namespace Notes.ViewModels
             Analytics.TrackEvent("ViewMap", properties);
         }
 
-        private void OnNewNoteCommand(object obj)
+        private async void OnNewNoteCommand(object obj)
         {
-            _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
+            _loadingService.ShowLoadingPage("loading...");
+            //await Task.Delay(TimeSpan.FromSeconds(3));
+            //_loadingService.HideLoadingPage();
+            await _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
         }
 
         private async void OnDeleteAllCommand(object obj)
