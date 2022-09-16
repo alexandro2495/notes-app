@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -23,20 +23,22 @@
             <converters:ValidatePasswordConverter x:Key="ValidatePassword" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout Margin="16">
-        <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}" AutomationId="nameentry">
+    <StackLayout Margin="16" Spacing="20">
+        <Label Text="Create your account" HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" FontSize="30" />
+        <renderer:StandardEntry x:Name="name" Placeholder="Name" Text="{Binding Name}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}" AutomationId="lastnentry">
+        <renderer:StandardEntry x:Name="last" Placeholder="Last" Text="{Binding LastName}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}" AutomationId="userprofile">
+        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
@@ -60,7 +62,7 @@
         </renderer:StandardEntry>
         <Button Text=" Create account" BackgroundColor="LightSeaGreen" AutomationId="createbutton"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="250" IsEnabled="False">
+                WidthRequest="290" IsEnabled="False">
             <!--Triggers-->
             <Button.Triggers>
                 <MultiTrigger TargetType="Button">

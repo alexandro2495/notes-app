@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:templates="clr-namespace:Notes.Templates"
     xmlns:views="clr-namespace:Notes.Views"
+    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
     x:Class="Notes.Pages.NotesPage"
     x:Name="NotePageReference"
     Title="{Binding Title}">
@@ -140,14 +141,19 @@
                     SelectionMode="Multiple"
                     ItemTemplate="{StaticResource NoteTemplateSelector}">
             <CollectionView.EmptyView>
-                <StackLayout BackgroundColor="#FAFAFA">
-                    <Label
+                <AbsoluteLayout BackgroundColor="#FAFAFA">
+                    <Image AbsoluteLayout.LayoutBounds="0,70,400,500"
+                        Source="{local:ImageResourceX Notes.Images.EmptyView.png}"/>
+                    <Label FontSize="20"
+                           AbsoluteLayout.LayoutBounds="60,470,300,110"
                         HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Text="No data found..."
-                        TextColor="Black"
-                        VerticalOptions="FillAndExpand"/>
-                </StackLayout>
+                        VerticalTextAlignment="Start"
+                        Text="Yo habia &#10; ponido mis notas aqui...&#10;"
+                        TextColor="DarkGray"/>
+                    <Label Text="Please pull to refresh" FontSize="20"
+                           TextColor="DarkGray"
+                           AbsoluteLayout.LayoutBounds="115,540,300,110"/>
+                </AbsoluteLayout>
             </CollectionView.EmptyView>
         </CollectionView>
    </RefreshView>

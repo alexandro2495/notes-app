@@ -162,5 +162,6 @@
     <BundleResource Include="Resources\delete.png" />
     <BundleResource Include="Resources\show.png" />
     <BundleResource Include="Resources\Maps.png" />
+    <BundleResource Include="Resources\My notes.png" />
   </ItemGroup>
 </Project>
