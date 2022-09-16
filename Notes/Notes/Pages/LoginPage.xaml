@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -31,6 +31,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <!--main views stack -->
+  <ScrollView>
     <StackLayout Margin="16" Spacing="20">
         <Label Text="Welcome to MyNotes App" VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center" FontSize="20"/>
@@ -71,5 +72,6 @@
             </Button.Triggers>
         </Button>
     </StackLayout>
+  </ScrollView>
 </ContentPage>
 
