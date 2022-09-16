@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -16,9 +18,8 @@ namespace Notes.ViewModels
     {
         private readonly INavigationService _navigation;
         private readonly IUserService _userService;
-        private readonly IAuthenticationService _authService;
         private readonly IAppConfigurationService _appConfiguration;
-        //Func<string, string, string, Task> _displayAlert;
+        private readonly IPageDialogService _dialogService;
 
         public ICommand SingUpCommand { get; private set; }
 
@@ -67,14 +68,13 @@ namespace Notes.ViewModels
         public SignUpViewModel(
             INavigationService navigation,
             IUserService userService,
-            IAuthenticationService authService,
-            IAppConfigurationService appConfiguration)
+            IAppConfigurationService appConfiguration,
+            IPageDialogService dialogService)
         {
             _navigation = navigation;
             _userService = userService;
-            _authService = authService;
+            _dialogService = dialogService;
             _appConfiguration = appConfiguration;
-            //_displayAlert = displayAlert;
 
             Title = Constants.SignUpPageTitle;
 
@@ -119,14 +119,12 @@ namespace Notes.ViewModels
 
 
                 _userService.Save(user);
-                //_authService.SignIn(user.UserName, user.Password);
                 _navigation.GoBackAsync();
-                //_navigation.NavigateAsync($"NavigationPage/{nameof(NotesViewModel)}");
             }
             catch (Exception e)
             {
-                //_displayAlert(Constants.ERRMSG_AUTHENTICATION_SIGN_UP, e.Message, Constants.OK);
-                Console.WriteLine($"{e.Message}");
+                _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_SIGN_UP, e.Message, Constants.OK);
+                Crashes.TrackError(e);
             }
         }
 

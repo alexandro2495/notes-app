@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Windows.Input;
+using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
 using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -14,7 +16,7 @@ namespace Notes.ViewModels
         private readonly IAuthenticationService _authService;
         private readonly IUserService _userService;
         private readonly IAppConfigurationService _appConfigurationService;
-        //Func<string, string, string, Task> _displayAlert;
+        private readonly IPageDialogService _dialogService;
 
         private string _title;
         public string Title
@@ -44,13 +46,14 @@ namespace Notes.ViewModels
             INavigationService navigation,
             IUserService userService,
             IAuthenticationService authService,
-            IAppConfigurationService appConfigurationService)
+            IAppConfigurationService appConfigurationService,
+            IPageDialogService dialogService)
         {
             _navigation = navigation;
             _userService = userService;
             _authService = authService;
             _appConfigurationService = appConfigurationService;
-            //_displayAlert = displayAlert;
+            _dialogService = dialogService;
 
             Title = Constants.LoginPageTitle;
             SignUpCommand = new Command(OnSignUpCommand);
@@ -58,28 +61,23 @@ namespace Notes.ViewModels
 
         }
 
-        private void OnLoginCommand(object obj)
+        private async void OnLoginCommand(object obj)
         {
             try
             {
                 _authService.SignIn(UserName, Password);
-                _navigation.NavigateAsync($"/NavigationPage/{nameof(NotesViewModel)}");
-                //_navigation.NavigateAsync(new System.Uri("/NavigationPage/NotesViewModel", System.UriKind.Absolute));
+                await _navigation.NavigateAsync($"/NavigationPage/{nameof(NotesViewModel)}");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine($"{e.Message}");
-                //_displayAlert(Constants.ERRMSG_AUTHENTICATION, e.Message, Constants.OK);
+                Crashes.TrackError(ex);
+                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_SIGN_IN, ex.Message, Constants.OK);
             }
-
-            //_navigation.NavigateAsync($"NavigationPage/{nameof(NotesViewModel)}");
         }
 
         private void OnSignUpCommand(object obj)
         {
             _navigation.NavigateAsync($"{nameof(SignUpViewModel)}");
-            //  NavigationPage/Login/signUp
-            //_navigation.PushAsync(new SignUpPage(_userService, _authService, _appConfigurationService));
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
