@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -10,6 +11,7 @@ using Notes.Data.Constants;
 using Notes.Data.Models;
 using Notes.Pages;
 using Notes.Services;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -25,7 +27,7 @@ namespace Notes.ViewModels
         public ICommand RefreshCommand { get; private set; }
         public ICommand MultipleSelectionCommand { get; private set; }
         public ICommand LogOutCommand { get; private set; }
-        public ICommand DeleteAllCommand { get; private set; }
+        public DelegateCommand DeleteAllCommand { get; private set; }
         public ICommand MapCommand { get; private set; }
 
         private string _title;
@@ -87,17 +89,24 @@ namespace Notes.ViewModels
             Notes = new ObservableCollection<Note>(notes);
             NotesSelected = new ObservableCollection<object>();
 
+
             RefreshCommand = new Command(async () => await OnRefreshCommand());
             DeleteNoteCommand = new Command<Note>(OnDeleteNoteCommand);
             DetailCommand = new Command<Note>(OnDetailCommand);
             NewNoteCommand = new Command(OnNewNoteCommand);
             MultipleSelectionCommand = new Command(OnMultipleSelectionCommand);
-            DeleteAllCommand = new Command(OnDeleteAllCommand);
+            DeleteAllCommand = new DelegateCommand(OnDeleteAllCommand, CanDeleteItems);
             LogOutCommand = new Command(OnLogOutCommand);
             MapCommand = new Command<Note>(OnMapCommand);
 
+           
             MessagingCenter.Subscribe<NoteDetailViewModel, Note>(this, Constants.MSGC_NEW_NOTE, OnAddNoteCommand);
             MessagingCenter.Subscribe<NoteDetailViewModel, Note>(this, Constants.MSGC_UPDATE_NOTE, OnUpdateNoteCommand);
+        }
+
+        private bool CanDeleteItems()
+        {
+            return NotesSelected.Any();
         }
 
         private void OnMapCommand(Note note)
@@ -122,7 +131,7 @@ namespace Notes.ViewModels
             await _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
         }
 
-        private async void OnDeleteAllCommand(object obj)
+        private async void OnDeleteAllCommand()
         {
             try
             {
@@ -175,7 +184,10 @@ namespace Notes.ViewModels
 
         private void OnMultipleSelectionCommand(object obj)
         {
+
             Console.WriteLine(NotesSelected.Count);
+
+            DeleteAllCommand?.RaiseCanExecuteChanged();
         }
 
         private void OnDetailCommand(Note note = null)

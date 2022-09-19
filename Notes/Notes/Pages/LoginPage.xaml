@@ -47,7 +47,7 @@
                                 Placeholder="Password" Text="{Binding Password}"
                                 AutomationId="passwordentry">
             <!--Effects-->
-            <renderer:StandardEntry.Effects>
+           <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>

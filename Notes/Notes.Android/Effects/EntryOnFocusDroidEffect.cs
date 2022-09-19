@@ -19,11 +19,12 @@ namespace Notes.Droid.Effects
         {
             try
             {
-                var entry = Control as TextView;
+                var entry = Control as FormsEditText;
                 if(entry != null)
                 {
                     backgroundColor = new Android.Graphics.Color(0, 0, 0, 0);
                     Control.SetBackgroundColor(backgroundColor);
+                    
                    
                 }
                 
