@@ -2,10 +2,12 @@
 using System.Windows.Input;
 using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
+using Notes.Data.Models;
 using Notes.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -87,7 +89,12 @@ namespace Notes.ViewModels
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            //throw new NotImplementedException();
+            if (parameters.ContainsKey("user"))
+            {
+                var _username = parameters.GetValue<User>("user");
+                UserName = _username.UserName;
+                Password = _username.Password;
+            }
         }
     }
 }

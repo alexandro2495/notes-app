@@ -163,5 +163,6 @@
     <BundleResource Include="Resources\show.png" />
     <BundleResource Include="Resources\Maps.png" />
     <BundleResource Include="Resources\My notes.png" />
+    <BundleResource Include="Resources\giphy.gif" />
   </ItemGroup>
 </Project>

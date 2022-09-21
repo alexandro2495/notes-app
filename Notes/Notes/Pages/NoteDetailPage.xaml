@@ -19,10 +19,12 @@
     </ContentPage.Resources>
   <ScrollView>
     <StackLayout Margin="16" Spacing="20">
-         <renderer:StandardEntry x:Name="title" Placeholder="Title" Text="{Binding Title}">
+         <renderer:StandardEntry x:Name="title" Placeholder="Title" Text="{Binding Title}"
+                                 IsEnabled="{Binding IsEnabled}">
             <!--Effects-->
         </renderer:StandardEntry>
-         <renderer:StandardEntry x:Name="content" Placeholder="Content" Text="{Binding Content}">
+         <renderer:StandardEntry x:Name="content" Placeholder="Content" Text="{Binding Content}"
+                                 IsEnabled="{Binding IsEnabled}">
             <!--Effects-->
         </renderer:StandardEntry>
         <Label Text="Select type of Note" />
@@ -31,10 +33,12 @@
                 TitleColor="Blue"
                 x:Name="NoteType"
                 ItemsSource="{Binding NoteTypes}"
-                SelectedIndex="{Binding NoteTypeSelected}"/> 
+                SelectedIndex="{Binding NoteTypeSelected}"
+                IsEnabled="{Binding IsEnabled}"/> 
         <Button Text="Save" BackgroundColor="LightSeaGreen"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="290" Margin="18" Command="{Binding SaveNoteCommand}" />
+                WidthRequest="290" Margin="18" Command="{Binding SaveNoteCommand}"
+                IsEnabled="{Binding IsEnabled}"/>
     </StackLayout>
   </ScrollView>
 </ContentPage>

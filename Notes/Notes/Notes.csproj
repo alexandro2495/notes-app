@@ -42,7 +42,6 @@
     <None Remove="Images\EmptyView.png" />
     <None Remove="Images\StartMyNotes.png" />
     <None Remove="Dialogs\" />
-    <None Remove="Images\giphy.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -71,6 +70,5 @@
     <EmbeddedResource Include="Images\Text.png" />
     <EmbeddedResource Include="Images\EmptyView.png" />
     <EmbeddedResource Include="Images\StartMyNotes.png" />
-    <EmbeddedResource Include="Images\giphy.gif" />
   </ItemGroup>
 </Project>

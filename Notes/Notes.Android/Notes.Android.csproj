@@ -78,7 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\StandarDroidEntry.cs" />
     <Compile Include="Renderers\NoteTypeDroidRenderer.cs" />
-    <Compile Include="Effects\EntryOnFocusDroidEffect.cs" />
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,11 +185,14 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\giphy.gif">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
-    <Folder Include="Effects\" />
     <Folder Include="Resources\Layout\" />
   </ItemGroup>
   <ItemGroup>

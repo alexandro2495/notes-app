@@ -127,11 +127,7 @@ namespace Notes.ViewModels
 
         private async void OnNewNoteCommand(object obj)
         {
-            var parameters = new DialogParameters
-             {
-                { "message", "Loading..." }
-             };
-            _loadingService.ShowCustomDialog(nameof(LoaderDialogViewModel), parameters);
+            
             await _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
         }
 

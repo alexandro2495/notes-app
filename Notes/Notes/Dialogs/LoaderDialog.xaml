@@ -8,7 +8,7 @@
     BackgroundColor="Black"
     HorizontalOptions="StartAndExpand"
     VerticalOptions="StartAndExpand">
-    <Image Source="{local:ImageResourceX Notes.Images.giphy.gif}"/>
+    <Image Source="giphy.gif" IsAnimationPlaying="True"/>
    <ActivityIndicator IsRunning="True" Color="White"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"/>

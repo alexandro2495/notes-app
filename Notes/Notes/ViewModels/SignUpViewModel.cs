@@ -119,7 +119,9 @@ namespace Notes.ViewModels
 
 
                 _userService.Save(user);
-                _navigation.GoBackAsync();
+                var parms = new NavigationParameters();
+                parms.Add("user", user);
+                _navigation.GoBackAsync(parms);
             }
             catch (Exception e)
             {
