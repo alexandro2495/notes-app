@@ -9,12 +9,14 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
 using Notes.Data.Models;
+using Notes.Dialogs;
 using Notes.Pages;
 using Notes.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using Prism.Services.Dialogs;
 using Xamarin.Forms;
 
 namespace Notes.ViewModels
@@ -63,7 +65,7 @@ namespace Notes.ViewModels
         private readonly IUserService _userService;
         private readonly IAuthenticationService _authService;
         private readonly IPageDialogService _dialogService;
-        private readonly ILoadingService _loadingService;
+        private readonly IDialogCustomService _loadingService;
         private readonly long _userId;
 
         public NotesViewModel(
@@ -72,7 +74,7 @@ namespace Notes.ViewModels
             IUserService userService,
             IAuthenticationService authService,
             IPageDialogService dialogService,
-            ILoadingService loadingService)
+            IDialogCustomService loadingService)
         {
             _navigation = navigation;
             _noteService = noteService;
@@ -125,9 +127,11 @@ namespace Notes.ViewModels
 
         private async void OnNewNoteCommand(object obj)
         {
-            _loadingService.ShowLoadingPage("loading...");
-            //await Task.Delay(TimeSpan.FromSeconds(3));
-            //_loadingService.HideLoadingPage();
+            var parameters = new DialogParameters
+             {
+                { "message", "Loading..." }
+             };
+            _loadingService.ShowCustomDialog(nameof(LoaderDialogViewModel), parameters);
             await _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}");
         }
 
@@ -185,15 +189,11 @@ namespace Notes.ViewModels
         private void OnMultipleSelectionCommand(object obj)
         {
 
-            Console.WriteLine(NotesSelected.Count);
-
             DeleteAllCommand?.RaiseCanExecuteChanged();
         }
 
         private void OnDetailCommand(Note note = null)
         {
-            //var page = new NoteDetailPage(note, _noteService, _userService);
-            //_navigation.PushAsync(page, true);
             var parms = new NavigationParameters();
             parms.Add("note", note);
             _navigation.NavigateAsync($"{nameof(NoteDetailViewModel)}", parms);

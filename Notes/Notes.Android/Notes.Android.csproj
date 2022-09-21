@@ -80,8 +80,6 @@
     <Compile Include="Renderers\NoteTypeDroidRenderer.cs" />
     <Compile Include="Effects\EntryOnFocusDroidEffect.cs" />
     <Compile Include="SplashActivity.cs" />
-    <Compile Include="Implementations\LoadingServiceDroid.cs" />
-    <Compile Include="DroidInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -194,7 +192,6 @@
     <Folder Include="Renderers\" />
     <Folder Include="Effects\" />
     <Folder Include="Resources\Layout\" />
-    <Folder Include="Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Notes\Notes.csproj">

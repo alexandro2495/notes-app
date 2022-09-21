@@ -24,7 +24,7 @@ namespace Notes.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
-            LoadApplication(new App(new IOSInitializer()));
+            LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }

@@ -18,7 +18,7 @@ namespace Notes.ViewModels
         private INavigationService _navigation;
         private INoteService _noteService;
         private IUserService _userService;
-        private ILoadingService _loadingService;
+        private IDialogCustomService _loadingService;
 
 
 
@@ -65,7 +65,7 @@ namespace Notes.ViewModels
             INavigationService navigation,
             INoteService noteService,
             IUserService userService,
-            ILoadingService loadingService
+            IDialogCustomService loadingService
         )
         {
             _navigation = navigation;
@@ -85,9 +85,6 @@ namespace Notes.ViewModels
 
         private void OnSaveNoteCommand()
         {
-            /*var location = await Geolocation.GetLocationAsync();
-            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}");*/
-            _loadingService.ShowLoadingPage("saving note...");
             if (_note != null)
             {
                 _note.Title = Title;
@@ -121,12 +118,10 @@ namespace Notes.ViewModels
                 MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
             }
             _navigation.GoBackAsync();
-            _loadingService.HideLoadingPage();
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            //throw new NotImplementedException();
             Console.WriteLine("OnNavigatedFrom");
         }
 
@@ -143,12 +138,10 @@ namespace Notes.ViewModels
                 Title = _note.Title;
                 NoteTypeSelected = (int)_note.Type;
 
-                //_locaiton = await Geolocation.GetLocationAsync();
-
                 if (_locaiton != null)
                 {
                     Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
-                    _loadingService.HideLoadingPage();
+                    _loadingService.CloseCustomDialog();
                 }
                 
 
@@ -158,9 +151,10 @@ namespace Notes.ViewModels
                 if (_locaiton != null)
                 {
                     Console.WriteLine($"Latitude: {_locaiton.Latitude}, Longitude: {_locaiton.Longitude}");
-                    _loadingService.HideLoadingPage();
+                    _loadingService.CloseCustomDialog();
                 }
             }
+            
         }
     }
 }

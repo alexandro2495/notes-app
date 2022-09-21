@@ -10,6 +10,8 @@ using Notes.Services.Implementations.SqliteImp;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Notes.Dialogs;
+using Notes.Services.Implementations;
 
 namespace Notes
 {
@@ -46,7 +48,9 @@ namespace Notes
             containerRegistry.Register<IUserService, UserSQLiteService>();
             containerRegistry.Register<IAuthenticationService, AuthSQLiteService>();
             containerRegistry.Register<IAppConfigurationService, AppConfigSQLiteService>();
-
+            containerRegistry.Register<IDialogCustomService, DialogCustomService>();
+            //Dialogs
+            containerRegistry.RegisterDialog<LoaderDialog, LoaderDialogViewModel>(nameof(LoaderDialogViewModel));
         }
 
         protected override void OnInitialized()

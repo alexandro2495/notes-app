@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
+    x:Class="Notes.Dialogs.LoaderDialog"
+    Padding="20"
+    BackgroundColor="Black"
+    HorizontalOptions="StartAndExpand"
+    VerticalOptions="StartAndExpand">
+    <Image Source="{local:ImageResourceX Notes.Images.giphy.gif}"/>
+   <ActivityIndicator IsRunning="True" Color="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+   <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                x:Name="LoadingLabel"
+                FontAttributes="Bold"
+                Text="{Binding Message}"
+                TextColor="White"
+                />
+</StackLayout>
+

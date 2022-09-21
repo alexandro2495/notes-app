@@ -41,6 +41,8 @@
     <None Remove="Utils\" />
     <None Remove="Images\EmptyView.png" />
     <None Remove="Images\StartMyNotes.png" />
+    <None Remove="Dialogs\" />
+    <None Remove="Images\giphy.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -49,6 +51,7 @@
     <Folder Include="Converters\" />
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
+    <Folder Include="Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />
@@ -68,5 +71,6 @@
     <EmbeddedResource Include="Images\Text.png" />
     <EmbeddedResource Include="Images\EmptyView.png" />
     <EmbeddedResource Include="Images\StartMyNotes.png" />
+    <EmbeddedResource Include="Images\giphy.gif" />
   </ItemGroup>
 </Project>
