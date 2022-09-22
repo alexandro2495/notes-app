@@ -100,7 +100,7 @@ namespace Notes.ViewModels
 
                 var parameters = new DialogParameters
              {
-                { "message", "Loading..." }
+                { "message", "Saving note" }
              };
                 _loadingService.ShowCustomDialog(nameof(LoaderDialogViewModel), parameters);
                 _locaiton = await Geolocation.GetLocationAsync();

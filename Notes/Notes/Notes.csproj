@@ -21,6 +21,7 @@
     <PackageReference Include="Microsoft.AppCenter" Version="4.5.3" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.3" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.3" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Core" />
@@ -39,9 +40,8 @@
     <None Remove="Converters\" />
     <None Remove="Effects\" />
     <None Remove="Utils\" />
-    <None Remove="Images\EmptyView.png" />
-    <None Remove="Images\StartMyNotes.png" />
     <None Remove="Dialogs\" />
+    <None Remove="Com.Airbnb.Xamarin.Forms.Lottie" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -68,7 +68,5 @@
     <EmbeddedResource Include="Images\Music.png" />
     <EmbeddedResource Include="Images\Picture.png" />
     <EmbeddedResource Include="Images\Text.png" />
-    <EmbeddedResource Include="Images\EmptyView.png" />
-    <EmbeddedResource Include="Images\StartMyNotes.png" />
   </ItemGroup>
 </Project>

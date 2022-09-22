@@ -1,23 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<StackLayout 
+<AbsoluteLayout 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
+    xmlns:local="clr-namespace:Notes.CustomMarkupXtension" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="Notes.Dialogs.LoaderDialog"
     Padding="20"
     BackgroundColor="Black"
     HorizontalOptions="StartAndExpand"
     VerticalOptions="StartAndExpand">
-    <Image Source="giphy.gif" IsAnimationPlaying="True"/>
+    <lottie:AnimationView x:Name="animation" Animation="notebook.json"
+                               AutoPlay="True" VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               RepeatMode="Infinite"
+                               BackgroundColor="Transparent"
+                               HeightRequest="300"
+                               WidthRequest="300"/>
+    <!--<Image Source="giphy.gif" IsAnimationPlaying="True"/>-->
    <ActivityIndicator IsRunning="True" Color="White"
                                HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                               VerticalOptions="Center"
+                               AbsoluteLayout.LayoutBounds="130,230"/>
    <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                 x:Name="LoadingLabel"
                 FontAttributes="Bold"
                 Text="{Binding Message}"
                 TextColor="White"
-                />
-</StackLayout>
+                FontSize="30"
+                AbsoluteLayout.LayoutBounds="70,280"/>
+</AbsoluteLayout>
 

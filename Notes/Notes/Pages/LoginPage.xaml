@@ -6,7 +6,7 @@
     xmlns:renderer="clr-namespace:Notes.Renderers"
     xmlns:effects="clr-namespace:Notes.Effects"
     xmlns:converters="clr-namespace:Notes.Converters"
-    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
@@ -34,8 +34,15 @@
   <ScrollView>
     <StackLayout Margin="16" Spacing="20">
         <Label Text="Welcome to MyNotes App" VerticalTextAlignment="Center"
-               HorizontalTextAlignment="Center" FontSize="20"/>
-        <Image Source="{local:ImageResourceX Notes.Images.StartMyNotes.png}"/>
+               HorizontalTextAlignment="Center" FontSize="30"
+               FontAttributes="Bold"/>
+        
+         <lottie:AnimationView x:Name="animation" Animation="welcome.json"
+                               AutoPlay="True" VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               RepeatMode="Infinite"
+                               HeightRequest="80"
+                               WidthRequest="100"/>
         <renderer:StandardEntry x:Name="username" Placeholder="Username"
                                 Text="{Binding UserName}">
             <!--Effects-->

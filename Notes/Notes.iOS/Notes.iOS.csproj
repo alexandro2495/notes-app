@@ -146,6 +146,9 @@
     <PackageReference Include="Xamarin.TestCloud.Agent">
       <Version>0.23.1</Version>
     </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>4.1.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -164,5 +167,8 @@
     <BundleResource Include="Resources\Maps.png" />
     <BundleResource Include="Resources\My notes.png" />
     <BundleResource Include="Resources\giphy.gif" />
+    <BundleResource Include="Resources\notebook.json" />
+    <BundleResource Include="Resources\welcome.json" />
+    <BundleResource Include="Resources\empty.json" />
   </ItemGroup>
 </Project>

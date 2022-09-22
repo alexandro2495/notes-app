@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:templates="clr-namespace:Notes.Templates"
     xmlns:views="clr-namespace:Notes.Views"
-    xmlns:local="clr-namespace:Notes.CustomMarkupXtension"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="Notes.Pages.NotesPage"
     x:Name="NotePageReference"
     Title="{Binding Title}">
@@ -134,25 +134,28 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <!--CollectionView setup-->
-  
     <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-
         <CollectionView ItemsSource="{Binding Notes}" SelectedItems="{Binding NotesSelected}"
                     SelectionChangedCommand="{Binding MultipleSelectionCommand}"
                     SelectionMode="Multiple"
                     ItemTemplate="{StaticResource NoteTemplateSelector}">
             <CollectionView.EmptyView>
-             <AbsoluteLayout>
               <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
               AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional">
                 <AbsoluteLayout BackgroundColor="#FAFAFA">
-                    <Image AbsoluteLayout.LayoutBounds="0.5,0,400,500"
-                           AbsoluteLayout.LayoutFlags="PositionProportional"
-                        Source="{local:ImageResourceX Notes.Images.EmptyView.png}"/>
+                    <lottie:AnimationView x:Name="animation" Animation="empty.json"
+                               AutoPlay="True" AbsoluteLayout.LayoutBounds="0.5,0,400,500"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                               HorizontalOptions="FillAndExpand"
+                               RepeatMode="Infinite"
+                               HeightRequest="80"
+                               WidthRequest="100"/>
                     <Label AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
-                           AbsoluteLayout.LayoutBounds="0.5,410,1,50"
+                           AbsoluteLayout.LayoutBounds="0.5,430,1,50"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Start"
+                        FontSize="15"
+                        FontAttributes="Bold"
                         Text="Yo habia &#10; ponido mis notas aqui...&#10;"
                         TextColor="DarkGray"/>
                     <Label AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
@@ -164,11 +167,9 @@
                            TextDecorations="Underline"
                            TextColor="DarkGray"/>
                 </AbsoluteLayout>
-              </ScrollView>
-             </AbsoluteLayout>
+               </ScrollView>
             </CollectionView.EmptyView>
         </CollectionView>
    </RefreshView>
-
 </ContentPage>
 

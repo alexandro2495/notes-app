@@ -154,8 +154,9 @@ namespace Notes.ViewModels
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
-                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
+               await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
             }
+            NotesSelected.Clear();
         }
 
         private async void OnLogOutCommand(object obj)
