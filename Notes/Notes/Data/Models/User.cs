@@ -9,7 +9,7 @@ namespace Notes.Data.Models
         [PrimaryKey]
         [AutoIncrement]
         public long Id { get; set; }
-
+        [Unique]
         public string UserName { get; set; }
 
         public string Email { get; set; }

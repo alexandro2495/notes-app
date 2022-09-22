@@ -1,5 +1,6 @@
 ﻿using System;
 using Notes.Data.Models;
+using SQLite;
 
 namespace Notes.Services.Implementations.SqliteImp
 {
@@ -11,7 +12,18 @@ namespace Notes.Services.Implementations.SqliteImp
 
         public void Save(User user)
         {
-            SQLiteConnectionSingleton.Connection().Insert(user);
+            try
+            {
+                SQLiteConnectionSingleton.Connection().Insert(user);
+            }
+            catch(SQLiteException e)
+            {
+                if (e.Message == "UNIQUE constraint failed: User.UserName")
+                {
+                    throw new Exception("This user already exists, please use another");
+                }
+            }
+            
         }
 
         public void Delete(User user)
