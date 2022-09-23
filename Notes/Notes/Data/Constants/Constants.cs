@@ -41,6 +41,7 @@ namespace Notes.Data.Constants
         public const string PageBackgroundColor = "EFEFEF";
         public const string FontFamily = "";
         public const string Language = "ES";
+        public const string DarkModeKey = "DarkModeKey";
 
     }
 }

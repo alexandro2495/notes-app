@@ -10,14 +10,16 @@
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
-        <ResourceDictionary>
-             <Style TargetType="renderer:StandardEntry">
+        <Style TargetType="renderer:StandardEntry">
                 <Setter Property="Padding" Value="13" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="BorderColor" Value="Gray" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="8" />
-            </Style>
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+        </Style>
+        <ResourceDictionary>
             <converters:ValidateEmailConverter x:Key="ValidateEmail" />
             <converters:ValidateUserNameConverter x:Key="ValidateUserName" />
             <converters:ValidatePasswordConverter x:Key="ValidatePassword" />
@@ -26,7 +28,8 @@
   <ScrollView>
     <StackLayout Margin="16" Spacing="10">
         <Label Text="Create your account" HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center" FontSize="30" />
+               VerticalTextAlignment="Center" FontSize="30"
+               Style="{DynamicResource PrimaryLabelStyle}"/>
         <renderer:StandardEntry x:Name="name" Placeholder="First name" Text="{Binding Name}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
@@ -34,7 +37,7 @@
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
             <Label Text="Enter your first name" FontSize="Micro" HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Center" TextColor="LightSlateGray"/>
+                   VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
         <renderer:StandardEntry x:Name="last" Placeholder="Last name" Text="{Binding LastName}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
@@ -42,7 +45,7 @@
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
             <Label Text="Enter your Last name" FontSize="Micro" HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Center" TextColor="LightSlateGray"/>
+                   VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
         <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
@@ -51,7 +54,7 @@
         </renderer:StandardEntry>
             <Label Text="Username must have at least 1 uppercase, 1 lower case, 1 number, 1 special character #_-, and at least 8 characters length"
                    FontSize="Micro" HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Center" TextColor="LightSlateGray"/>
+                   VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
         <renderer:StandardEntry x:Name="password" IsPassword="True"
                                 Placeholder="Password" Text="{Binding Password}" AutomationId="passwordprofile">
             <!--Effects-->
@@ -61,7 +64,7 @@
         </renderer:StandardEntry>
             <Label Text="Password must have at least 1 uppercase, 1 lower case, 1 number, and at least 8 characters length"
                    FontSize="Micro" HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Center" TextColor="LightSlateGray"/>
+                   VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
         <renderer:StandardEntry x:Name="email" Placeholder="E-mail" Text="{Binding Email}" AutomationId="emailentry">
             <!--Behavior-->
             <renderer:StandardEntry.Effects>
@@ -71,9 +74,10 @@
                 <behavior:ValidateEmailBehavior />
             </renderer:StandardEntry.Behaviors>
         </renderer:StandardEntry>
-        <Button Text=" Create account" BackgroundColor="LightSeaGreen" AutomationId="createbutton"
+        <Button Text=" Create account" AutomationId="createbutton"
                 HorizontalOptions="Center" HeightRequest="40"
-                WidthRequest="290" IsEnabled="False">
+                WidthRequest="290" IsEnabled="False"
+                Style="{DynamicResource ButtonStyle}">
             <!--Triggers-->
             <Button.Triggers>
                 <MultiTrigger TargetType="Button">

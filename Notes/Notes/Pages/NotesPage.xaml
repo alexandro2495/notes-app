@@ -15,11 +15,16 @@
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal">  </VisualState>
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{DynamicResource TransparentColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="Green" />
+                                        Value="{DynamicResource SelectedViewColor}" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -142,7 +147,7 @@
             <CollectionView.EmptyView>
               <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
               AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional">
-                <AbsoluteLayout BackgroundColor="#FAFAFA">
+                <AbsoluteLayout BackgroundColor="{DynamicResource PageBackgroundColor}">
                     <lottie:AnimationView x:Name="animation" Animation="empty.json"
                                AutoPlay="True" AbsoluteLayout.LayoutBounds="0.5,0,400,500"
                                 AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -151,21 +156,21 @@
                                HeightRequest="80"
                                WidthRequest="100"/>
                     <Label AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
-                           AbsoluteLayout.LayoutBounds="0.5,430,1,50"
+                           AbsoluteLayout.LayoutBounds="0.5,440,1,50"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Start"
                         FontSize="15"
                         FontAttributes="Bold"
                         Text="Yo habia &#10; ponido mis notas aqui...&#10;"
-                        TextColor="DarkGray"/>
+                        Style="{DynamicResource SecondaryLabelStyle}"/>
                     <Label AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
-                           AbsoluteLayout.LayoutBounds="0.5,480,1,50"
+                           AbsoluteLayout.LayoutBounds="0.5,500,1,50"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Start"
                            FontSize="20"
                            Text="Please pull to refresh&#10;or create a new note"
                            TextDecorations="Underline"
-                           TextColor="DarkGray"/>
+                           Style="{DynamicResource SecondaryLabelStyle}"/>
                 </AbsoluteLayout>
                </ScrollView>
             </CollectionView.EmptyView>

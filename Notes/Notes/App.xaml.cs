@@ -12,6 +12,10 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Notes.Dialogs;
 using Notes.Services.Implementations;
+using System.Collections.Generic;
+using Xamarin.Essentials;
+using Notes.Data.Constants;
+using Notes.Themes;
 
 namespace Notes
 {
@@ -58,6 +62,10 @@ namespace Notes
             try
             {
                 InitializeComponent();
+                //theme app changes
+                InitializeAppTheme();
+                Application.Current.RequestedThemeChanged += OnThemeChanged;
+                //InitializeAppTheme();
 
                 //init App Center
                 AppCenter.Start("android=d7eb73c3-5ba2-446e-a671-a9265dec2e22;" +
@@ -79,6 +87,45 @@ namespace Notes
             } catch(Exception e)
             {
                 Crashes.TrackError(e);
+            }
+
+
+        }
+
+        private void OnThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            InitializeAppTheme(e.RequestedTheme);
+        }
+
+
+        private void InitializeAppTheme(OSAppTheme? oSAppTheme= null)
+        {
+            if(oSAppTheme== null)
+            {
+                if (Preferences.Get(Constants.DarkModeKey, false))
+                {
+                    oSAppTheme = OSAppTheme.Dark;
+                }
+                else
+                {
+                    oSAppTheme = OSAppTheme.Light;
+                }
+            }
+
+            ICollection<ResourceDictionary> mergedDictionaries =
+            Application.Current.Resources.MergedDictionaries;
+
+            if(mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+            }
+            if(oSAppTheme == OSAppTheme.Dark)
+            {
+                mergedDictionaries.Add(new DarkTheme());
+            }
+            else
+            {
+                mergedDictionaries.Add(new LightTheme());
             }
         }
     }

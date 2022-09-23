@@ -42,6 +42,7 @@
     <None Remove="Utils\" />
     <None Remove="Dialogs\" />
     <None Remove="Com.Airbnb.Xamarin.Forms.Lottie" />
+    <None Remove="Themes\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -51,6 +52,7 @@
     <Folder Include="Effects\" />
     <Folder Include="Utils\" />
     <Folder Include="Dialogs\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />
