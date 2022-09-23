@@ -23,21 +23,29 @@ namespace Notes.UTests
             var authenticationService = new Mock<IAuthenticationService>();
             var appConfigurationService = new Mock<IAppConfigurationService>();
 
+            authenticationService.Setup(Ia => Ia.SignIn("aagr2495_", "Aa123456")).Returns(() => {
+                return true;
+            });
+
+            authenticationService.Setup(Ia => Ia.SignIn(It.IsAny<string>(), It.IsAny<string>())).Returns(() => {
+                return false;
+            });
+
             userService.Setup(Iu => Iu.GetLoggedUser()).Returns(() =>
             {
                 var user = new User()
                 {
                     Name = "Angel",
                     LastName = "Garcia",
-                    UserName = "aagr2495",
-                    Password = "123456",
+                    UserName = "aagr2495_",
+                    Password = "Aa123456",
                     Email = "agarciar95@gmail.com"
                 };
 
                 return user;
             });
 
-            User user = userService.Object.GetLoggedUser();
+            
             noteService.Setup(i => i.GetNotes(It.IsAny<long>())).Returns(() =>
             {
                 return new List<Note>()

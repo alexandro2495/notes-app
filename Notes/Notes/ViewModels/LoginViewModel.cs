@@ -19,6 +19,7 @@ namespace Notes.ViewModels
         private readonly IUserService _userService;
         private readonly IAppConfigurationService _appConfigurationService;
         private readonly IPageDialogService _dialogService;
+        public bool loginWasSuccess {get; set;}
 
         private string _title;
         public string Title
@@ -63,21 +64,33 @@ namespace Notes.ViewModels
 
         }
 
-        private async void OnLoginCommand(object obj)
+        public async void OnLoginCommand()
         {
             try
             {
-                _authService.SignIn(UserName, Password);
-                await _navigation.NavigateAsync($"/NavigationPage/{nameof(NotesViewModel)}");
+                loginWasSuccess = _authService.SignIn(UserName, Password);
+                if (loginWasSuccess)
+                {
+                    await _navigation.NavigateAsync($"/NavigationPage/{nameof(NotesViewModel)}");
+                }
+                else
+                {
+                    await _dialogService.DisplayAlertAsync(
+                        Constants.ERRMSG_AUTHENTICATION_SIGN_IN,
+                        Constants.ERRMSG_AUTHENTICATION_SIGN_IN_DESC,
+                        Constants.OK);
+                }
+                
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
                 await _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_SIGN_IN, ex.Message, Constants.OK);
+                loginWasSuccess = false;
             }
         }
 
-        private void OnSignUpCommand(object obj)
+        private void OnSignUpCommand()
         {
             _navigation.NavigateAsync($"{nameof(SignUpViewModel)}");
         }

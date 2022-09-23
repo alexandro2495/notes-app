@@ -18,6 +18,7 @@ namespace Notes.Data.Constants
         public const string ERRMSG_DELETE_NOTE_DESC = "We weren't able to perform the delete action, please try again later.";
         public const string ERRMSG_AUTHENTICATION = "Bad Credentials!";
         public const string ERRMSG_AUTHENTICATION_SIGN_IN = "Sign In failed!";
+        public const string ERRMSG_AUTHENTICATION_SIGN_IN_DESC = "Authentication Error Username/Password not equal";
         public const string ERRMSG_AUTHENTICATION_SIGN_UP = "Sign Up failed!";
         public const string ERRMSG_AUTHENTICATION_LOGOUT = "Log Out failed!";
         public const string ERRMSG_AUTHENTICATION_LOGOUT_DESC = "we weren't able to perform log out, please try again later.";

@@ -25,7 +25,7 @@ namespace Notes.Services.Implementations.SqliteImp
             }
             else
             {
-                throw new Exception("Authentication Error Username/Password not equal");
+                return false;
             }
         }
 

@@ -81,7 +81,7 @@ namespace Notes.ViewModels
             SingUpCommand = new Command(OnSignUp);
         }
 
-        private void OnSignUp()
+        public void OnSignUp()
         {
             try
             {
