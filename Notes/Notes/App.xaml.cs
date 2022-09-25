@@ -63,9 +63,8 @@ namespace Notes
             {
                 InitializeComponent();
                 //theme app changes
-                InitializeAppTheme();
+                InitializeAppTheme(Application.Current.RequestedTheme);
                 Application.Current.RequestedThemeChanged += OnThemeChanged;
-                //InitializeAppTheme();
 
                 //init App Center
                 AppCenter.Start("android=d7eb73c3-5ba2-446e-a671-a9265dec2e22;" +

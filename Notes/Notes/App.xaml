@@ -11,10 +11,12 @@
             <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
         </Style>
 
-         <Style x:Name="NavigatinoPageStyle" TargetType="NavigationPage">
+         <Style x:Name="NavigatinoPageStyle" TargetType="NavigationPage"
+                ApplyToDerivedTypes="True">
             <Setter Property="BarBackgroundColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="BarTextColor" Value="White" />
         </Style>
+
 
          <Style x:Key="PrimaryLabelStyle" TargetType="Label" ApplyToDerivedTypes="True">
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>

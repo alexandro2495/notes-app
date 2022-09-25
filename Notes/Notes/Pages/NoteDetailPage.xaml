@@ -28,7 +28,8 @@
             <!--Effects-->
         </renderer:StandardEntry>
         <Label Text="Select type of Note" Style="{DynamicResource PrimaryLabelStyle}" />
-        <renderer:NoteTypePicker Placeholder="Select Note type"  
+        <renderer:NoteTypePicker Placeholder="Select Note type"
+                TextColor="{DynamicResource PrimaryTextColor}"
                 Title="Select Note type"  
                 TitleColor="Red"
                 x:Name="NoteType"
