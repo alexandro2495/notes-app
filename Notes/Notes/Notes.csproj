@@ -21,7 +21,8 @@
     <PackageReference Include="Microsoft.AppCenter" Version="4.5.3" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.3" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.3" />
-    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+    <!-- we change this line to PrivateAssets because we was having issues building the Unit test project, so keep in mind this work around for future porpuse-->
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0"> <PrivateAssets>all</PrivateAssets> </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Core" />

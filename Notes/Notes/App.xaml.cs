@@ -53,6 +53,9 @@ namespace Notes
             containerRegistry.Register<IAuthenticationService, AuthSQLiteService>();
             containerRegistry.Register<IAppConfigurationService, AppConfigSQLiteService>();
             containerRegistry.Register<IDialogCustomService, DialogCustomService>();
+            containerRegistry.Register<IAnalyticService, AppCenterAnalyticService>();
+            containerRegistry.Register<ICrashReposrtService, AppCenterCrashReportService>();
+
             //Dialogs
             containerRegistry.RegisterDialog<LoaderDialog, LoaderDialogViewModel>(nameof(LoaderDialogViewModel));
         }
