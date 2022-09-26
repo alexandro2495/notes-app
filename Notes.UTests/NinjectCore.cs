@@ -24,8 +24,10 @@ namespace Notes.UTests
             var authenticationService = new Mock<IAuthenticationService>();
             var appConfigurationService = new Mock<IAppConfigurationService>();
             var pageDialogService = new Mock<IPageDialogService>();
+            var analyticService = new Mock<IAnalyticService>();
+            var crashReportService = new Mock<ICrashReposrtService>();
 
-            
+
 
             authenticationService.Setup(Ia => Ia.SignIn(It.IsAny<string>(), It.IsAny<string>())).Returns(() => {
                 return false;
@@ -49,7 +51,6 @@ namespace Notes.UTests
                 return user;
             });
 
-            
             noteService.Setup(i => i.GetNotes(It.IsAny<long>())).Returns(() =>
             {
                 return new List<Note>()
@@ -69,6 +70,8 @@ namespace Notes.UTests
             Bind<IAuthenticationService>().ToConstant(authenticationService.Object);
             Bind<IAppConfigurationService>().ToConstant(appConfigurationService.Object);
             Bind<IPageDialogService>().ToConstant(pageDialogService.Object);
+            Bind<IAnalyticService>().ToConstant(analyticService.Object);
+            Bind<ICrashReposrtService>().ToConstant(crashReportService.Object);
         }
     }
 }

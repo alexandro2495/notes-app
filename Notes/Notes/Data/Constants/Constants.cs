@@ -20,8 +20,13 @@ namespace Notes.Data.Constants
         public const string ERRMSG_AUTHENTICATION_SIGN_IN = "Sign In failed!";
         public const string ERRMSG_AUTHENTICATION_SIGN_IN_DESC = "Authentication Error Username/Password not equal";
         public const string ERRMSG_AUTHENTICATION_SIGN_UP = "Sign Up failed!";
+        public const string ERRMSG_AUTHENTICATION_SIGN_UP_DUPLICATE_USERNAME = "This user already exists, please use another";
+        public const string ERRMSG_AUTHENTICATION_SIGN_UP_DESC = "we weren't able to perform sing up, please try again later.";
         public const string ERRMSG_AUTHENTICATION_LOGOUT = "Log Out failed!";
         public const string ERRMSG_AUTHENTICATION_LOGOUT_DESC = "we weren't able to perform log out, please try again later.";
+        public const string ERRMSG_SINGUP_APPCONFIG_DESC = "we weren't able to perform sign up, AppConfigService respond with error.";
+        public const string ERRMSG_SINGUP_USER_DESC = "we weren't able to perform sign up, UserService respond with error.";
+
         // MessagingCenter constants
         public const string MSGC_SET_ROOT_PAGE = "SET_ROOT_PAGE";
         public const string MSGC_NEW_NOTE = "NEW_NOTE";

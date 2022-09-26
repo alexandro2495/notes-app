@@ -12,7 +12,15 @@ namespace Notes.Services.Implementations.SqliteImp
 
         public void Create(AppConfiguration config)
         {
-            SQLiteConnectionSingleton.Connection().Insert(config);
+            try
+            {
+                SQLiteConnectionSingleton.Connection().Insert(config);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            
         }
 
         public void Update(AppConfiguration note)

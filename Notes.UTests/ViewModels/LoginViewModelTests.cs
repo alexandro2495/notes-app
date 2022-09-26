@@ -22,11 +22,10 @@ namespace Notes.UTests.ViewModels
             loginViewModel.Password = password;
 
             // 2 - Act
-            loginViewModel.OnLoginCommand();
+            var isLoginSucess = loginViewModel.ValidateAuthentication();
 
             // 3 - Assert
-            Assert.IsNotNull(loginViewModel.loginWasSuccess);
-            Assert.IsTrue(loginViewModel.loginWasSuccess);
+            Assert.IsTrue(isLoginSucess);
         }
 
         [Test]
@@ -40,11 +39,10 @@ namespace Notes.UTests.ViewModels
             loginViewModel.Password = password;
 
             // 2 - Act
-            loginViewModel.OnLoginCommand();
+            var isLoginSucess = loginViewModel.ValidateAuthentication();
 
             // 3 - Assert
-            Assert.IsNotNull(loginViewModel.loginWasSuccess);
-            Assert.IsFalse(loginViewModel.loginWasSuccess);
+            Assert.IsFalse(isLoginSucess);
         }
     }
 }

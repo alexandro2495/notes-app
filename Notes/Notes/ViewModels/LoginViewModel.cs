@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.AppCenter.Crashes;
 using Notes.Data.Constants;
@@ -19,7 +20,7 @@ namespace Notes.ViewModels
         private readonly IUserService _userService;
         private readonly IAppConfigurationService _appConfigurationService;
         private readonly IPageDialogService _dialogService;
-        public bool loginWasSuccess {get; set;}
+        private readonly ICrashReposrtService _crashReposrtService;
 
         private string _title;
         public string Title
@@ -50,26 +51,34 @@ namespace Notes.ViewModels
             IUserService userService,
             IAuthenticationService authService,
             IAppConfigurationService appConfigurationService,
-            IPageDialogService dialogService)
+            IPageDialogService dialogService,
+            ICrashReposrtService crashReposrtService
+            )
         {
             _navigation = navigation;
             _userService = userService;
             _authService = authService;
             _appConfigurationService = appConfigurationService;
             _dialogService = dialogService;
+            _crashReposrtService = crashReposrtService;
 
             Title = Constants.LoginPageTitle;
             SignUpCommand = new Command(OnSignUpCommand);
-            LoginCommand = new Command(OnLoginCommand);
+            LoginCommand = new Command(async () => await OnLoginCommand());
 
         }
 
-        public async void OnLoginCommand()
+        public bool ValidateAuthentication()
+        {
+            return _authService.SignIn(UserName, Password);
+        }
+
+
+        public async Task OnLoginCommand()
         {
             try
             {
-                loginWasSuccess = _authService.SignIn(UserName, Password);
-                if (loginWasSuccess)
+                if (ValidateAuthentication())
                 {
                     await _navigation.NavigateAsync($"/NavigationPage/{nameof(NotesViewModel)}");
                 }
@@ -84,9 +93,8 @@ namespace Notes.ViewModels
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                _crashReposrtService.TrackError(ex);
                 await _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_SIGN_IN, ex.Message, Constants.OK);
-                loginWasSuccess = false;
             }
         }
 

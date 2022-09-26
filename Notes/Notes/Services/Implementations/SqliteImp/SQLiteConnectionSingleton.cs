@@ -15,6 +15,8 @@ namespace Notes.Services.Implementations.SqliteImp
         //database connection object
         private SQLiteConnection _dbConnectionInstance;
 
+        private ICrashReposrtService crashReposrtService;
+
         //list to declare our database tables
         private List<Type> Tables = new List<Type>();
 
