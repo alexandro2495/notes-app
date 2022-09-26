@@ -5,17 +5,17 @@
     x:Class="Notes.Pages.NoteDetailPage"
     xmlns:renderer="clr-namespace:Notes.Renderers"
     Title="{Binding TitlePage}">
-     <!--Resources for custom renderers -->
     <ContentPage.Resources>
-        <ResourceDictionary>
-             <Style TargetType="renderer:StandardEntry">
+        <Style TargetType="renderer:StandardEntry">
                 <Setter Property="Padding" Value="13" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="BorderColor" Value="Gray" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="8" />
-            </Style>
-        </ResourceDictionary>
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+        </Style>
+
     </ContentPage.Resources>
   <ScrollView>
     <StackLayout Margin="16" Spacing="20">
@@ -27,15 +27,16 @@
                                  IsEnabled="{Binding IsEnabled}">
             <!--Effects-->
         </renderer:StandardEntry>
-        <Label Text="Select type of Note" />
-        <renderer:NoteTypePicker Placeholder="Select Note type"  
+        <Label Text="Select type of Note" Style="{DynamicResource PrimaryLabelStyle}" />
+        <renderer:NoteTypePicker Placeholder="Select Note type"
+                TextColor="{DynamicResource PrimaryTextColor}"
                 Title="Select Note type"  
-                TitleColor="Blue"
+                TitleColor="Red"
                 x:Name="NoteType"
                 ItemsSource="{Binding NoteTypes}"
                 SelectedIndex="{Binding NoteTypeSelected}"
                 IsEnabled="{Binding IsEnabled}"/> 
-        <Button Text="Save" BackgroundColor="LightSeaGreen"
+        <Button Text="Save" Style="{DynamicResource ButtonStyle}"
                 HorizontalOptions="Center" HeightRequest="40"
                 WidthRequest="290" Margin="18" Command="{Binding SaveNoteCommand}"
                 IsEnabled="{Binding IsEnabled}"/>

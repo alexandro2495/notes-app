@@ -10,8 +10,8 @@
           Source="{local:ImageResourceX Notes.Images.Picture.png}"/>
 
         <StackLayout VerticalOptions="CenterAndExpand">
-                <Label Text="{Binding Title}"/>
-                <Label Text="{Binding CreatedAt}"/>
+                <Label Text="{Binding Title}" Style="{DynamicResource PrimaryLabelStyle}"/>
+                <Label Text="{Binding CreatedAt}" Style="{DynamicResource PrimaryLabelStyle}"/>
         </StackLayout>
     </StackLayout>
 </Frame>

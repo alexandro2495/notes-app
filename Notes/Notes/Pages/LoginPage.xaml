@@ -10,14 +10,16 @@
     Title="{Binding Title}">
     <!--Resources for custom renderers -->
     <ContentPage.Resources>
-        <ResourceDictionary>
-             <Style TargetType="renderer:StandardEntry">
+        <Style TargetType="renderer:StandardEntry">
                 <Setter Property="Padding" Value="13" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="BorderColor" Value="Gray" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="8" />
-            </Style>
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+        </Style>
+        <ResourceDictionary>
             <converters:ValidateLengthPasswordConverter x:Key="VLPassword" />
             <converters:ValidateLengthUsernameConverter x:Key="VLUserName" />
         </ResourceDictionary>
@@ -35,7 +37,7 @@
     <StackLayout Margin="16" Spacing="20">
         <Label Text="Welcome to MyNotes App" VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center" FontSize="30"
-               FontAttributes="Bold"/>
+               FontAttributes="Bold" Style="{DynamicResource PrimaryLabelStyle}"/>
         
          <lottie:AnimationView x:Name="animation" Animation="welcome.json"
                                AutoPlay="True" VerticalOptions="FillAndExpand"
@@ -58,8 +60,8 @@
                 <effects:EntryOnFocusEffect />
             </renderer:StandardEntry.Effects>
         </renderer:StandardEntry>
-        <Button Text="Sign In" IsEnabled="False"
-                BackgroundColor="LightSeaGreen" HorizontalOptions="Center" HeightRequest="40"
+        <Button Text="Sign In" IsEnabled="False" Style="{DynamicResource ButtonStyle} "
+                HorizontalOptions="Center" HeightRequest="40"
                 WidthRequest="250" AutomationId="signinbutton">
             <Button.Triggers>
                 <!--Triggers-->
