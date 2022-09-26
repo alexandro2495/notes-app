@@ -20,10 +20,14 @@ namespace Notes.Services.Implementations.SqliteImp
             {
                 if (e.Message == "UNIQUE constraint failed: User.UserName")
                 {
-                    throw new Exception("This user already exists, please use another");
+                    throw e;
                 }
             }
-            
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
 
         public void Delete(User user)

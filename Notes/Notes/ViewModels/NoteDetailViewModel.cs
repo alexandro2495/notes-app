@@ -21,10 +21,10 @@ namespace Notes.ViewModels
         private INoteService _noteService;
         private IUserService _userService;
         private IDialogCustomService _loadingService;
+        private IAnalyticService _analyticService;
+        private ICrashReposrtService _crashReposrtService;
 
-
-
-        public ICommand SaveNoteCommand { get; private set; }
+        
 
         private Note _note = null;
 
@@ -69,17 +69,23 @@ namespace Notes.ViewModels
             set => SetProperty(ref _noteTypes, value);
         }
 
+        public ICommand SaveNoteCommand { get; private set; }
+
         public NoteDetailViewModel(
             INavigationService navigation,
             INoteService noteService,
             IUserService userService,
-            IDialogCustomService loadingService
+            IDialogCustomService loadingService,
+            IAnalyticService analyticService,
+            ICrashReposrtService crashReposrtService
         )
         {
             _navigation = navigation;
             _noteService = noteService;
             _userService = userService;
             _loadingService = loadingService;
+            _analyticService = analyticService;
+            _crashReposrtService = crashReposrtService;
             IsEnabled = true;
 
             NoteTypes = new List<string>() {
@@ -99,9 +105,9 @@ namespace Notes.ViewModels
                 IsEnabled = false;
 
                 var parameters = new DialogParameters
-             {
-                { "message", "Saving note" }
-             };
+                 {
+                    { "message", "Saving note" }
+                 };
                 _loadingService.ShowCustomDialog(nameof(LoaderDialogViewModel), parameters);
                 _locaiton = await Geolocation.GetLocationAsync();
                 if (_locaiton != null)
@@ -135,11 +141,11 @@ namespace Notes.ViewModels
                     _noteService.Create(_note);
 
                     var properties = new Dictionary<string, string> {
-                    {
-                        "Type", NoteTypes[NoteTypeSelected]
-                    },
-                };
-                    Analytics.TrackEvent("NoteTypeAdded", properties);
+                        {
+                            "Type", NoteTypes[NoteTypeSelected]
+                        },
+                    };
+                    _analyticService.NoteTypeAdded(properties);
 
                     MessagingCenter.Send(this, Constants.MSGC_NEW_NOTE, _note);
                 }

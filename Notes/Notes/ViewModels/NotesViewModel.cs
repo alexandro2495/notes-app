@@ -66,6 +66,8 @@ namespace Notes.ViewModels
         private readonly IAuthenticationService _authService;
         private readonly IPageDialogService _dialogService;
         private readonly IDialogCustomService _loadingService;
+        private readonly IAnalyticService _analyticService;
+        private readonly ICrashReposrtService _crashReposrtService;
         private readonly long _userId;
 
         public NotesViewModel(
@@ -74,7 +76,9 @@ namespace Notes.ViewModels
             IUserService userService,
             IAuthenticationService authService,
             IPageDialogService dialogService,
-            IDialogCustomService loadingService)
+            IDialogCustomService loadingService,
+            IAnalyticService analyticService,
+            ICrashReposrtService crashReposrtService)
         {
             _navigation = navigation;
             _noteService = noteService;
@@ -82,6 +86,8 @@ namespace Notes.ViewModels
             _authService = authService;
             _dialogService = dialogService;
             _loadingService = loadingService;
+            _analyticService = analyticService;
+            _crashReposrtService = crashReposrtService;
             _userId = _userService.GetLoggedUser().Id;
 
             Title = Constants.NotePageTitle;
@@ -122,7 +128,8 @@ namespace Notes.ViewModels
                     "Note_Title", note.Title
                 }
             };
-            Analytics.TrackEvent("ViewMap", properties);
+
+            _analyticService.ViewMap(properties);
         }
 
         private async void OnNewNoteCommand(object obj)
@@ -153,7 +160,7 @@ namespace Notes.ViewModels
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                _crashReposrtService.TrackError(ex);
                await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
             }
             NotesSelected.Clear();
@@ -178,7 +185,7 @@ namespace Notes.ViewModels
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                _crashReposrtService.TrackError(ex);
                 await _dialogService.DisplayAlertAsync(Constants.ERRMSG_AUTHENTICATION_LOGOUT, Constants.ERRMSG_AUTHENTICATION_LOGOUT_DESC, Constants.OK);
             }
         }
@@ -215,7 +222,7 @@ namespace Notes.ViewModels
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                _crashReposrtService.TrackError(ex);
                 await _dialogService.DisplayAlertAsync(Constants.ERRMSG_DELETE_NOTE, Constants.ERRMSG_DELETE_NOTE_DESC, Constants.OK);
             }
             
