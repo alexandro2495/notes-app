@@ -9,7 +9,7 @@
     <!-- Set theme colors from https://aka.ms/material-colors -->
     <item name="colorPrimary">@color/colorPrimary</item>
     <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorPrimaryDark">@android:color/black</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">@color/colorAccent</item>
