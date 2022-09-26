@@ -30,7 +30,7 @@
         <Label Text="Create your account" HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center" FontSize="30"
                Style="{DynamicResource PrimaryLabelStyle}"/>
-        <renderer:StandardEntry x:Name="name" Placeholder="First name" Text="{Binding Name}">
+        <renderer:StandardEntry x:Name="name" Placeholder="First name" Text="{Binding Name}" AutomationId="nameentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
@@ -38,7 +38,7 @@
         </renderer:StandardEntry>
             <Label Text="Enter your first name" FontSize="Micro" HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
-        <renderer:StandardEntry x:Name="last" Placeholder="Last name" Text="{Binding LastName}">
+        <renderer:StandardEntry x:Name="last" Placeholder="Last name" Text="{Binding LastName}" AutomationId="lastnentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
@@ -46,7 +46,7 @@
         </renderer:StandardEntry>
             <Label Text="Enter your Last name" FontSize="Micro" HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center" Style="{DynamicResource TertiaryLabelStyle}"/>
-        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}">
+        <renderer:StandardEntry x:Name="username" Placeholder="Username" Text="{Binding UserName}" AutomationId="userprofile">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />

@@ -27,7 +27,7 @@ namespace Notes.UITesting
                     .Android
                     // TODO: Update this path to point to your Android app and uncomment the
                     // code if the app is not included in the solution.
-                    .ApkFile ("../../../../../../Users/Consultant/Documents/GitHub/notes-app/Notes/Notes.Android/bin/Debug/com.thinkingcode.notes-Signed.apk")
+                    .ApkFile ("../../../Notes/Notes.Android/bin/Debug/com.thinkingcode.notes-Signed.apk")
                     .StartApp();
             }
 

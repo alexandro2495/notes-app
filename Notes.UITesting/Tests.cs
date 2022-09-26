@@ -51,12 +51,12 @@ namespace Notes.UITesting
             app.DismissKeyboard();
             app.Tap("createbutton");
 
-            app.Tap("userentry");
+            /*app.Tap("userentry");
             app.EnterText("Carlos_1");
             app.DismissKeyboard();
             app.Tap("passwordentry");
             app.EnterText("Cagl1581");
-            app.DismissKeyboard();
+            app.DismissKeyboard();*/
 
             //Act
             app.Tap("signinbutton");

@@ -46,7 +46,7 @@
                                HeightRequest="80"
                                WidthRequest="100"/>
         <renderer:StandardEntry x:Name="username" Placeholder="Username"
-                                Text="{Binding UserName}">
+                                Text="{Binding UserName}" AutomationId="userentry">
             <!--Effects-->
             <renderer:StandardEntry.Effects>
                 <effects:EntryOnFocusEffect />
